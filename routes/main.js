@@ -1,8 +1,7 @@
-var express = require('express');
+const express = require('express');
 // eslint-disable-next-line new-cap
-var router = express.Router();
+const router = express.Router();
 
-/* GET users listing. */
 router.get('/', (req, res) => {
   res.render('main', { title: 'Express' });
 });
