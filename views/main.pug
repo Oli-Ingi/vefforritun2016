@@ -1,6 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href="/thread/fishing") fishing
+  .container
+    .header
+      h1 The Mega Forum!
+    .main
+      a(href="/thread/fishing")
+        .link Fishing
+      a(href="/thread/MMORPGS")
+        .link MMORPGS
+      a(href="/thread/hunting")
+        .link Hunting
+      a(href="/thread/NodeJS")
+        .link NodeJS programming
+      a(href="/thread/Java")
+        .link Java programming
+    .footer
