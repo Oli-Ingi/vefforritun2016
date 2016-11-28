@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')();
 
-const db = pgp('postgres://forum:forum@localhost:5432/forum');
+const db = pgp('postgres://Wolfster:asdf@localhost:5432/forum');
 
 function Thread(threadName, author, text, date = 0, id = 0) {
   this.id = id;
@@ -57,7 +57,7 @@ const saveThread = (thread) => {
   const threadName = thread.threadName;
   const author = thread.author;
   const text = thread.text;
-  return db.none('INSERT INTO threads(threadName, author, text) VALUES($1, $2, $3,);', [threadName, author, text])
+  return db.none('INSERT INTO threads(threadName, author, text) VALUES($1, $2, $3);', [threadName, author, text])
     .then((data) => {
       console.log('successful');
       console.log(data);
@@ -74,30 +74,36 @@ const savePost = (post) => {
   const author = post.author;
   const text = post.text;
   return db.none('INSERT INTO posts(threadId, postName, author, text) VALUES($1, $2, $3, $4);', [threadId, postName, author, text])
-    .then((data) => {
-      console.log('successful');
-      console.log(data);
-    })
-    .catch((error) => {
-      console.log('neibb');
-      console.log(error);
-    });
+  .then((data) => {
+    console.log('successful');
+    console.log(data);
+  })
+  .catch((error) => {
+    console.log('neibb');
+    console.log(error);
+  });
 };
 
 // reply has to have the properties postId, author and text.
 // postId has to point to an id of a postId
 // author and text can just be strings.
-const saveReply = (reply) => {
+const saveReply = reply => {
   const postId = reply.postId;
   const author = reply.author;
   const text = reply.text;
+  console.log("-----------------------------");
+  console.log(postId);
+  console.log(author);
+  console.log(text);
+  console.log("-----------------------------");
   return db.none('INSERT INTO replies(postId, author, text) VALUES($1, $2, $3);', [postId, author, text])
     .then((data) => {
       console.log('successful');
       console.log(data);
     })
     .catch((error) => {
-      console.log(error);
+      console.log('neibb');
+      // console.log(error);
     });
 };
 
@@ -107,8 +113,6 @@ const saveReply = (reply) => {
 const texti = getPostsInThread(1);
 texti.then((data) => {
   console.log(data);
-  // console.log(data[0].text);
-  // console.log(data[1].text);
 });
 
 // just to test the functions
@@ -122,7 +126,7 @@ const insert3 = saveThread(thread);
 insert3.then(() => {
   console.log('virkar þetta');
 });
-
+//
 const post = new Post(1, 'this about bazookas', 'Mr. Bombastic', 'this text is describing things about using TNT instead of rockets.');
 const insert2 = savePost(post);
 insert2.then(() => {
