@@ -26,11 +26,11 @@ gulp.task('sass', () => (
   .pipe(gulp.dest('./public/stylesheets'))
 ));
 
-gulp.task('babel', () => {
-  return gulp.src('./src/js/*.js')
-        .pipe(babel().on('error', (err) => { console.log(err); } ))
-        .pipe(gulp.dest('./public/javascripts'));
-});
+gulp.task('babel', () => (
+  gulp.src('./src/js/*.js')
+  .pipe(babel())
+  .pipe(gulp.dest('./public/javascripts'))
+));
 
 gulp.task('serve', () => {
   browserSync.init(null, {
