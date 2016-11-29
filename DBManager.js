@@ -32,12 +32,16 @@ const getThreads = () => db.any('select * from threads');
 
 // returns an array of Post objects
 const getPostsInThread = threadId =>
-  db.any('select * from posts where threadId = $1', threadId)
-    .then(data => data)
-    .catch((error) => {
-      console.log('neibb');
-      return error;
-    });
+  db.any('select * from posts where threadid = $1', threadId);
+
+const threadWithPosts = threadId =>
+  db.task(t => {
+    return t.batch([
+      t.one('select * from threads where id = $1', threadId),
+      t.any('select * from posts where threadid = $1', threadId)
+    ]);
+  })
+
 
 const getRepliesInPost = postId =>
   db.any('select * from replies where postId = $1', postId)
@@ -140,6 +144,7 @@ module.exports = {
   Post,
   Reply,
   getThreads,
+  threadWithPosts,
   getPostsInThread,
   getRepliesInPost,
   saveThread,

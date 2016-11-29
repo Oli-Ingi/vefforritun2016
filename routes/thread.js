@@ -1,20 +1,22 @@
 const express = require('express');
 // eslint-disable-next-line new-cap
 const router = express.Router();
+const DBMan = require('../DBManager');
 
-function capitalize(str) {
-  if (str) {
-    return `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
-  }
-  return str;
-}
+router.get('/:id', (req, res) => {
+  DBMan.threadWithPosts(req.params.id)
+    .then((data) => {
+      const thread = data[0];
+      const posts = data[1];
 
-router.get('/:name', (req, res) => {
-  const threadTitle = capitalize(req.params.name);
-
-  // DBManager(title); get all that is needed from DBManager to render page
-  res.render('thread', { threadTitle });
+      res.render('thread', {
+        thread,
+        posts,
+      })
+    })
+    .catch((error) => {
+      res.render("error", { error });
+    })
 });
-
 
 module.exports = router;

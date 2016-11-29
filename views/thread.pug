@@ -8,12 +8,22 @@ html(lang='en')
   body
     .container
       header.page-header.text-center
-        h1= threadTitle
+        h1= thread.threadname
         p.text-info
-          em Rant about anything you want!
+          em By #{thread.author}
       main
         .panel-group
           // Hér birtast færslur notenda
+          each post in posts
+            article.panel.panel-info.entry
+              header.panel-heading
+                h3= post.author
+                  small  posted
+              .panel-body
+                p= post.text
+                .col-xs-offset-1
+                  .replies
+                    // Hér koma svör við færslu
         .panel.form-container
           button.btn.btn-block.btn-primary.btn-lg.toggle-form(type='button')
             | New Rant
@@ -31,4 +41,3 @@ html(lang='en')
               span.glyphicon.glyphicon-pencil
               |  Create
         a(href="/") go back
-    script(src='/javascripts/site_scripts.js')

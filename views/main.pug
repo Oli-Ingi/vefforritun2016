@@ -10,7 +10,7 @@ block content
   main
     h2 Our threads
     each thread in threads
-      a(href="/thread/" + thread.title)
+      a(href="/thread/" + thread.id)
         .thread
           h3= thread.threadname
           span Created by
