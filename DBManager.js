@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')();
 
-const db = pgp('postgres://Wolfster:asdf@localhost:5432/forum');
+const db = pgp('postgres://forum:forum@localhost:5432/forum');
 
 function Thread(threadName, author, text, date = 0, id = 0) {
   this.id = id;
@@ -27,13 +27,7 @@ function Reply(postId, author, text, id = 0, date = 0) {
   this.date = date;
 }
 
-const getThreads = () =>
-  db.any('select * from threads')
-    .then(data => data)
-    .catch((error) => {
-      console.log('neibb');
-      return error;
-    });
+const getThreads = () => db.any('select * from threads');
 
 
 // returns an array of Post objects
