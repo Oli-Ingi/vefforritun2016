@@ -18,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', main);
 app.use('/thread', thread);
+app.use('/thread/post', post);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
