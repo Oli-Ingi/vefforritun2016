@@ -14,15 +14,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const newThread = new DBMan.Thread(req.body.thread-title, req.body.thread-author, req.body.thread-description);
-  const id = DBMan.saveThread(newThread)
+  const newThread = new DBMan.Thread(req.body.threadtitle, req.body.threadauthor, req.body.threaddescription);
+  DBMan.saveThread(newThread)
     .then( (data) => {
-      return data.id;
+      res.redirect('/'+data.id);
     })
     .catch((error) => {
-      return 0;
+      res.sent("Error");
     });
-  res.redirect('/'+id);
 });
 
 module.exports = router;

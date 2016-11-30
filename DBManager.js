@@ -55,12 +55,6 @@ const saveThread = (thread) => {
   const author = thread.author;
   const text = thread.text;
   return db.one('INSERT INTO threads(threadName, author, text) VALUES($1, $2, $3) returning id', [threadName, author, text])
-    .then((data) => {
-      console.log(data.id);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 };
 
 const savePost = (post) => {
