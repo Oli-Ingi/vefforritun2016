@@ -23,22 +23,24 @@ block content
           button.create-btn.btn(type="submit") Create
             div
       .filter-container.col-xs-12.col-sm-6
-        // filters listed here
+        .filters
+          // filters listed here
         .filter-form
           input.form-control(type="text")
           button.filter-btn.btn
              div Create filter
-    each thread in threads
-      a(href="/thread/" + thread.id).col-xs-12
-        .thread
-          h3= thread.threadname
-          span Created by
-          p.creator= thread.author
-          span   on
-          p.date= thread.date.toJSON().slice(0,10)
+    .thread-container
+      each thread in threads
+        a(href="/thread/" + thread.id).col-xs-12
+          .thread
+            h3= thread.threadname
+            span Created by
+            p.creator= thread.author
+            span   on
+            p.date= thread.date.toJSON().slice(0,10)
 
-          p.label Description:
-          p.description= thread.text
+            p.label Description:
+            p.description= thread.text
   footer
   script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
   script(src="/javascripts/main.js")

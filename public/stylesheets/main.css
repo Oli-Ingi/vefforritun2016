@@ -51,6 +51,22 @@ main {
         display: block; }
       main .top .create-thread .btn {
         margin-top: 10px; }
+    main .top .filter-container .filters {
+      text-align: right;
+      font-weight: bold; }
+      main .top .filter-container .filters p {
+        color: red;
+        transition: 0.3s;
+        border-radius: 5px;
+        margin: 3px; }
+        main .top .filter-container .filters p img {
+          height: 14px;
+          display: none; }
+      main .top .filter-container .filters p:hover {
+        background-color: #bbb;
+        cursor: pointer; }
+      main .top .filter-container .filters p:hover > img {
+        display: inline; }
     main .top .filter-container .filter-form {
       display: flex;
       justify-content: flex-end;
