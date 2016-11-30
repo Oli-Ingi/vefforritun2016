@@ -13,4 +13,16 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+  const newThread = new DBMan.Thread(req.body.thread-title, req.body.thread-author, req.body.thread-description);
+  const id = DBMan.saveThread(newThread)
+    .then( (data) => {
+      return data.id;
+    })
+    .catch((error) => {
+      return 0;
+    });
+  res.redirect('/'+id);
+});
+
 module.exports = router;
