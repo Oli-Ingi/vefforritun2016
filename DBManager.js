@@ -26,18 +26,18 @@ const getPostsInThread = threadId =>
   db.any('select * from posts where threadid = $1', threadId);
 
 const threadWithPosts = threadId =>
-  db.task(t => {
-    return t.batch([
+  db.task((t) => {
+    t.batch([
       t.one('select * from threads where id = $1', threadId),
-      t.any('select * from posts where threadid = $1', threadId)
+      t.any('select * from posts where threadid = $1', threadId),
     ]);
   });
 
 const postWithReplies = postId =>
-  db.task(t => {
-    return t.batch([
+  db.task((t) => {
+    t.batch([
       t.one('select * from posts where id = $1', postId),
-      t.any('select * from replies where postid = $1', postId)
+      t.any('select * from replies where postid = $1', postId),
     ]);
   });
 
@@ -68,24 +68,20 @@ const savePost = (post) => {
 // reply has to have the properties postId, author and text.
 // postId has to point to an id of a postId
 // author and text can just be strings.
-const saveReply = reply => {
+const saveReply = (reply) => {
   const postId = reply.postId;
   const author = reply.author;
   const text = reply.text;
-  console.log("-----------------------------");
-  console.log(postId);
-  console.log(author);
-  console.log(text);
-  console.log("-----------------------------");
   return db.one('INSERT INTO replies(postId, author, text) VALUES($1, $2, $3) returning id', [postId, author, text]);
 };
 
 
 // START OF TESTING
 //---------------------------
+/*
 const texti = getPostsInThread(1);
 texti.then((data) => {
-  console.log("--");
+  console.log(data);
 });
 
 // just to test the functions
@@ -94,7 +90,7 @@ svar.then((data) => {
   console.log("--");
 }).catch((e) => { console.log(e); });
 
-/*
+
 const thread = new Thread('this about bazookas', 'Mr. Bombastic', 'this text is describing things about using TNT instead of rockets.');
 const insert3 = saveThread(thread);
 insert3.then((data) => {
@@ -121,6 +117,7 @@ module.exports = {
   Post,
   Reply,
   getThreads,
+  postWithReplies,
   threadWithPosts,
   getPostsInThread,
   getRepliesInPost,

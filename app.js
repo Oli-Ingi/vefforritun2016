@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const main = require('./routes/main');
 const thread = require('./routes/thread');
+const post = require('./routes/post');
 
 const app = express();
 

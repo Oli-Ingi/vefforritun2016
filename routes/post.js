@@ -12,11 +12,11 @@ router.get('/:id', (req, res) => {
       res.render('post', {
         post,
         replies,
-      })
+      });
     })
     .catch((error) => {
       res.render('error', { error });
-    })
+    });
 });
 
 router.post('/:id', (req, res) => {
