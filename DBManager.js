@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')();
 
-const db = pgp('postgres://forum:forum@localhost:5432/forum');
+const db = pgp('postgres://Wolfster:asdf@localhost:5432/forum');
 
 function Post(threadId, postName, author, text, id = 0, date = 0) {
   this.id = id;
@@ -27,7 +27,7 @@ const getPostsInThread = threadId =>
 
 const threadWithPosts = threadId =>
   db.task((t) => {
-    t.batch([
+    return t.batch([
       t.one('select * from threads where id = $1', threadId),
       t.any('select * from posts where threadid = $1', threadId),
     ]);
