@@ -18,6 +18,40 @@ header {
 main {
   padding: 0 5%;
   margin-top: 30px; }
+  main .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; }
+    main .top .create-thread {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px; }
+      main .top .create-thread label {
+        margin: 5px 0 0 0; }
+      main .top .create-thread h4 {
+        padding: 10px;
+        text-align: center;
+        background-color: #bbf;
+        border-radius: 5px 5px 0px 0px;
+        margin: 0;
+        transition: 0.3s; }
+      main .top .create-thread h4:hover {
+        background-color: #e4e4ff;
+        cursor: pointer; }
+      main .top .create-thread .thread-form {
+        background-color: #99b;
+        padding: 10px;
+        border-radius: 0px 0px 5px 5px; }
+      main .top .create-thread input, main .top .create-thread textarea {
+        display: block; }
+      main .top .create-thread .btn {
+        margin-top: 10px; }
+    main .top .filter-form {
+      margin-bottom: 10px; }
+      main .top .filter-form .form-control {
+        display: inline-block;
+        width: auto;
+        margin-right: 5px; }
   main a {
     text-decoration: none; }
   main .thread {

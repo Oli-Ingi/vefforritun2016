@@ -4,15 +4,9 @@ const DBMan = require('../DBManager');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  DBMan.threadsWithCount()
-    .then((data) => {
-      const counter = data[0];
-      const threads = data[1];
-
-      res.render('main', {
-        counter,
-        threads,
-      });
+  DBMan.getThreads()
+    .then((threads) => {
+      res.render('main', { threads });
     })
     .catch((error) => {
       res.send("Error");

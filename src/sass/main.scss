@@ -27,6 +27,56 @@ main {
   padding: 0 5%;
   margin-top: 30px;
 
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .create-thread {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+
+      label { margin: 5px 0 0 0; }
+
+      h4 {
+        padding: 10px;
+        text-align: center;
+        background-color: #bbf;
+        border-radius: 5px 5px 0px 0px;
+        margin: 0;
+        transition: 0.3s;
+      }
+
+      h4:hover {
+        background-color: lighten(#bbf, 8%);
+        cursor: pointer;
+      }
+
+      .thread-form {
+        background-color: #99b;
+        padding:10px;
+        border-radius: 0px 0px 5px 5px;
+      }
+
+      input, textarea { display: block; }
+
+      .btn {
+        margin-top: 10px;
+      }
+    }
+
+    .filter-form {
+      margin-bottom: 10px;
+
+      .form-control {
+        display: inline-block;
+        width: auto;
+        margin-right: 5px;
+      }
+    }
+  }
+
   a { text-decoration: none; }
 
   .thread {

@@ -1,14 +1,30 @@
 extends layout
 
 block extendHeader
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
   link(rel="stylesheet", href="/stylesheets/main.css")
-
 block content
   header
     h1 The Mega Forum
     p Talk about anything you want!
   main
-    h2 Showing #{counter.count} threads
+    .top
+      .create-thread
+        h4 Create new thread
+          span.caret
+        form.thread-form(action="/" method="POST")
+          label(for="thread-author") Author:
+          input.form-control.thread-author(type="text" id="thread-author" placeholder="Author")
+          label(for="thread-title") Thread title:
+          input.form-control.thread-title(type="text" id="thread-title" placeholder="Title")
+          label(for="thread-description") Thread description:
+          textarea.form-control.thread-description(cols="50" id="thread-description" placeholder="Description")
+          button.create-btn.btn(type="submit") Create
+            div
+      .filter-form
+        input.form-control(type="text")
+        button.filter-btn.btn
+           div Create filter
     each thread in threads
       a(href="/thread/" + thread.id)
         .thread

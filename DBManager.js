@@ -27,17 +27,7 @@ function Reply(postId, author, text, id = 0, date = 0) {
   this.date = date;
 }
 
-const getThreadCount = () => db.one('select count(*) from threads');
-
 const getThreads = () => db.any('select * from threads');
-
-const threadsWithCount = () =>
-  db.task(t => {
-    return t.batch([
-      t.one('select count(*) from threads'),
-      t.any('select * from threads')
-    ]);
-  })
 
 // returns an array of Post objects
 const getPostsInThread = threadId =>
@@ -152,8 +142,6 @@ module.exports = {
   Thread,
   Post,
   Reply,
-  getThreadCount,
-  threadsWithCount,
   getThreads,
   threadWithPosts,
   getPostsInThread,
