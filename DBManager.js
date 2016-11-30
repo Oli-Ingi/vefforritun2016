@@ -54,7 +54,7 @@ const saveThread = (thread) => {
   const threadName = thread.threadName;
   const author = thread.author;
   const text = thread.text;
-  return db.one('INSERT INTO threads(threadName, author, text) VALUES($1, $2, $3) returning id', [threadName, author, text])
+  return db.one('INSERT INTO threads(threadName, author, text) VALUES($1, $2, $3) returning id', [threadName, author, text]);
 };
 
 const savePost = (post) => {
@@ -62,13 +62,7 @@ const savePost = (post) => {
   const postName = post.postName;
   const author = post.author;
   const text = post.text;
-  return db.one('INSERT INTO posts(threadId, postName, author, text) VALUES($1, $2, $3, $4) returning id', [threadId, postName, author, text])
-  .then((data) => {
-    console.log(data.id);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  return db.one('INSERT INTO posts(threadId, postName, author, text) VALUES($1, $2, $3, $4) returning id', [threadId, postName, author, text]);
 };
 
 // reply has to have the properties postId, author and text.
@@ -83,12 +77,7 @@ const saveReply = reply => {
   console.log(author);
   console.log(text);
   console.log("-----------------------------");
-  return db.one('INSERT INTO replies(postId, author, text) VALUES($1, $2, $3) returning id', [postId, author, text])
-    .then((data) => {
-      console.log(data.id);
-    })
-    .catch((error) => {
-    });
+  return db.one('INSERT INTO replies(postId, author, text) VALUES($1, $2, $3) returning id', [postId, author, text]);
 };
 
 
