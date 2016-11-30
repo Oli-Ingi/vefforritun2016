@@ -8,7 +8,7 @@ block content
     h1 The Mega Forum
     p Talk about anything you want!
   main
-    h2 Our threads
+    h2 Showing #{counter.count} threads
     each thread in threads
       a(href="/thread/" + thread.id)
         .thread
@@ -16,6 +16,8 @@ block content
           span Created by
           p.creator= thread.author
           span   on
-          p.date= thread.date
+          p.date= thread.date.toJSON().slice(0,10)
+
+          p.label Description:
           p.description= thread.text
   footer

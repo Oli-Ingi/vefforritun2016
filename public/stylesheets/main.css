@@ -42,6 +42,10 @@ main {
     main .thread span {
       color: blue;
       margin-right: 5px; }
+    main .thread .label {
+      color: #44f;
+      font-weight: bold;
+      margin-bottom: 5px; }
     main .thread .description {
       color: #112; }
   main .thread:hover {

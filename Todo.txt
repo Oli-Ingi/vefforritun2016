@@ -1,0 +1,11 @@
+TODO
+
+show replies slideDown -client
+create thread virkni -server
+create post/reply virkni -server
+Search filter forsíðu -client 
+Search filter thread síðu -client
+showing thread count -> -client ? þar sem search yrði client-side
+css
+(login fyrir supervisor
+ o delete virkni) 

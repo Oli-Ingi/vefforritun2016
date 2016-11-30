@@ -10,7 +10,7 @@ html(lang='en')
       header.page-header.text-center
         h1= thread.threadname
         p.text-info
-          em By #{thread.author}
+          em Created By #{thread.author} on #{thread.date.toJSON().slice(0,10)}
       main
         .panel-group
           // Hér birtast færslur notenda
