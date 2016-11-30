@@ -26,7 +26,7 @@ const getPostsInThread = threadId =>
   db.any('select * from posts where threadid = $1', threadId);
 
 const threadWithPosts = threadId =>
-  db.task(t => {
+  return db.task(t => {
     return t.batch([
       t.one('select * from threads where id = $1', threadId),
       t.any('select * from posts where threadid = $1', threadId)
