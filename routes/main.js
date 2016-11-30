@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
       res.render('main', { threads });
     })
     .catch((error) => {
-      res.send('Error');
+      res.render('error', { error });
     });
 });
 
