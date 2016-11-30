@@ -31,7 +31,15 @@ const threadWithPosts = threadId =>
       t.one('select * from threads where id = $1', threadId),
       t.any('select * from posts where threadid = $1', threadId)
     ]);
-  })
+  });
+
+const postWithReplies = postId =>
+  db.task(t => {
+    return t.batch([
+      t.one('select * from posts where id = $1', postId),
+      t.any('select * from replies where postid = $1', postId)
+    ]);
+  });
 
 
 const getRepliesInPost = postId =>
@@ -86,13 +94,14 @@ svar.then((data) => {
   console.log("--");
 }).catch((e) => { console.log(e); });
 
+/*
 const thread = new Thread('this about bazookas', 'Mr. Bombastic', 'this text is describing things about using TNT instead of rockets.');
 const insert3 = saveThread(thread);
 insert3.then((data) => {
   console.log(data.id);
   console.log('virkar að vista Thread');
 });
-//
+
 const post = new Post(1, 'this about bazookas', 'Mr. Bombastic', 'this text is describing things about using TNT instead of rockets.');
 const insert2 = savePost(post);
 insert2.then((data) => {
@@ -106,7 +115,7 @@ insert.then((data) => {
   console.log(data.id);
   console.log('virkar að vista reply');
 });
-
+*/
 
 module.exports = {
   Post,

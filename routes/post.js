@@ -4,14 +4,14 @@ const router = express.Router();
 const DBMan = require('../DBManager');
 
 router.get('/:id', (req, res) => {
-  DBMan.threadWithPosts(req.params.id)
+  DBMan.postWithReplies(req.params.id)
     .then((data) => {
-      const thread = data[0];
-      const posts = data[1];
+      const post = data[0];
+      const replies = data[1];
 
-      res.render('thread', {
-        thread,
-        posts,
+      res.render('post', {
+        post,
+        replies,
       })
     })
     .catch((error) => {
@@ -20,14 +20,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
-  const newPost = {
-    threadId: req.params.id,
-    postName: req.body['post-title'],
-    author: req.body['post-author'],
-    text: req.body['post-text'],
+  const newReply = {
+    postId: req.params.id,
+    author: req.body['reply-author'],
+    text: req.body['reply-text'],
   };
 
-  DBMan.saveThread(newPost)
+  DBMan.saveThread(newReply)
     .then((data) => {
       res.redirect('/thread/post/' + data.id);
     })
