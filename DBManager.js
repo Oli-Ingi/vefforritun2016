@@ -2,14 +2,6 @@ const pgp = require('pg-promise')();
 
 const db = pgp('postgres://forum:forum@localhost:5432/forum');
 
-function Thread(threadName, author, text, date = 0, id = 0) {
-  this.id = id;
-  this.threadName = threadName;
-  this.author = author;
-  this.text = text;
-  this.date = date;
-}
-
 function Post(threadId, postName, author, text, id = 0, date = 0) {
   this.id = id;
   this.threadId = threadId;
@@ -53,7 +45,7 @@ const getRepliesInPost = postId =>
 const saveThread = (thread) => {
   const threadName = thread.threadName;
   const author = thread.author;
-  const text = thread.text;
+  const text = thread.description;
   return db.one('INSERT INTO threads(threadName, author, text) VALUES($1, $2, $3) returning id', [threadName, author, text]);
 };
 
@@ -117,7 +109,6 @@ insert.then((data) => {
 
 
 module.exports = {
-  Thread,
   Post,
   Reply,
   getThreads,

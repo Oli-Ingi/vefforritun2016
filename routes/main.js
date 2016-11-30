@@ -14,13 +14,18 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const newThread = new DBMan.Thread(req.body.threadtitle, req.body.threadauthor, req.body.threaddescription);
+  const newThread = {
+    threadName: req.body['thread-title'],
+    author: req.body['thread-author'],
+    description: req.body['thread-description'],
+  };
+
   DBMan.saveThread(newThread)
-    .then( (data) => {
-      res.redirect('/'+data.id);
+    .then((data) => {
+      res.redirect('/thread/' + data.id);
     })
     .catch((error) => {
-      res.sent("Error");
+      res.render('error', { error });
     });
 });
 
