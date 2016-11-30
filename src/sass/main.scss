@@ -31,6 +31,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    flex-wrap: wrap;
 
     .create-thread {
       display: flex;
@@ -39,21 +40,25 @@ main {
 
       label { margin: 5px 0 0 0; }
 
-      h4 {
+      .create-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 10px;
-        text-align: center;
         background-color: #bbf;
-        border-radius: 5px 5px 0px 0px;
-        margin: 0;
+        border-radius: 5px;
         transition: 0.3s;
+
+        h4 { margin: 0; }
       }
 
-      h4:hover {
+      .create-header:hover {
         background-color: lighten(#bbf, 8%);
         cursor: pointer;
       }
 
       .thread-form {
+        display: none;
         background-color: #99b;
         padding:10px;
         border-radius: 0px 0px 5px 5px;
@@ -66,13 +71,17 @@ main {
       }
     }
 
-    .filter-form {
-      margin-bottom: 10px;
+    .filter-container {
 
-      .form-control {
-        display: inline-block;
-        width: auto;
-        margin-right: 5px;
+      .filter-form {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+
+        .form-control {
+          display: inline-block;
+          margin-right: 5px;
+        }
       }
     }
   }

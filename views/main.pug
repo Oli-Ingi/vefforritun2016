@@ -9,8 +9,9 @@ block content
     p Talk about anything you want!
   main
     .top
-      .create-thread
-        h4 Create new thread
+      .create-thread.col-xs-12.col-sm-6
+        .create-header
+          h4 Create new thread
           span.caret
         form.thread-form(action="/" method="POST")
           label(for="thread-author") Author:
@@ -18,15 +19,17 @@ block content
           label(for="thread-title") Thread title:
           input.form-control.thread-title(type="text" id="thread-title" name="thread-title" placeholder="Title")
           label(for="thread-description") Thread description:
-          textarea.form-control.thread-description(cols="50" id="thread-description" name="thread-description" placeholder="Description")
+          textarea.form-control.thread-description(id="thread-description" name="thread-description" placeholder="Description")
           button.create-btn.btn(type="submit") Create
             div
-      .filter-form
-        input.form-control(type="text")
-        button.filter-btn.btn
-           div Create filter
+      .filter-container.col-xs-12.col-sm-6
+        // filters listed here
+        .filter-form
+          input.form-control(type="text")
+          button.filter-btn.btn
+             div Create filter
     each thread in threads
-      a(href="/thread/" + thread.id)
+      a(href="/thread/" + thread.id).col-xs-12
         .thread
           h3= thread.threadname
           span Created by
@@ -37,3 +40,5 @@ block content
           p.label Description:
           p.description= thread.text
   footer
+  script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
+  script(src="/javascripts/main.js")

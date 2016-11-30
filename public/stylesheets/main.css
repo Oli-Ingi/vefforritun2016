@@ -21,24 +21,29 @@ main {
   main .top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; }
+    align-items: flex-end;
+    flex-wrap: wrap; }
     main .top .create-thread {
       display: flex;
       flex-direction: column;
       margin-bottom: 10px; }
       main .top .create-thread label {
         margin: 5px 0 0 0; }
-      main .top .create-thread h4 {
+      main .top .create-thread .create-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 10px;
-        text-align: center;
         background-color: #bbf;
-        border-radius: 5px 5px 0px 0px;
-        margin: 0;
+        border-radius: 5px;
         transition: 0.3s; }
-      main .top .create-thread h4:hover {
+        main .top .create-thread .create-header h4 {
+          margin: 0; }
+      main .top .create-thread .create-header:hover {
         background-color: #e4e4ff;
         cursor: pointer; }
       main .top .create-thread .thread-form {
+        display: none;
         background-color: #99b;
         padding: 10px;
         border-radius: 0px 0px 5px 5px; }
@@ -46,11 +51,12 @@ main {
         display: block; }
       main .top .create-thread .btn {
         margin-top: 10px; }
-    main .top .filter-form {
+    main .top .filter-container .filter-form {
+      display: flex;
+      justify-content: flex-end;
       margin-bottom: 10px; }
-      main .top .filter-form .form-control {
+      main .top .filter-container .filter-form .form-control {
         display: inline-block;
-        width: auto;
         margin-right: 5px; }
   main a {
     text-decoration: none; }
