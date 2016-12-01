@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(function () {
-
   $('.toggle-form').click(function () {
     var form = document.querySelector('.post-form');
     var formContainer = document.querySelector('.form-container');
@@ -14,7 +13,7 @@ $(document).ready(function () {
       form.classList.add('hidden');
       formContainer.classList.remove('dropup');
       formContainer.classList.add('dropdown');
-    };
+    }
   });
 
   // eslint-disable-next-line prefer-arrow-callback
@@ -63,7 +62,6 @@ $(document).ready(function () {
         text: form.find('textarea[name="replier-reply"]').val()
       },
       success: function success(data) {
-        alert(data);
         $('.replies-container').append(data);
         $('.new-reply').fadeIn('slow');
       }

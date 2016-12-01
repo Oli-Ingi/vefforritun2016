@@ -18,6 +18,13 @@ $(document).ready(function () {
     }
   });
 
+  function countThreads() {
+    var spanLoc = $('.count');
+    var threads = $('.thread:visible');
+    spanLoc.empty();
+    spanLoc.prepend('Showing ' + threads.length + ' threads');
+  }
+
   $('.filter-btn').click(function () {
     var filters = $('.filters');
     var filterForm = $('.filter-form input');
@@ -60,13 +67,6 @@ $(document).ready(function () {
     if (filters.children().length < 1) filters.empty();
     countThreads();
   });
-
-  function countThreads() {
-    var spanLoc = $('.count');
-    var threads = $('.thread:visible');
-    spanLoc.empty();
-    spanLoc.prepend('Showing ' + threads.length + ' threads');
-  }
 
   countThreads();
 });
