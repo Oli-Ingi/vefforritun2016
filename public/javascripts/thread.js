@@ -17,6 +17,7 @@ $(document).ready(function () {
     };
   });
 
+  // eslint-disable-next-line prefer-arrow-callback
   $('.panel-group').on('click', '.panel-heading', function () {
     var post = $(this);
     var postID = post.attr('id');
@@ -37,12 +38,13 @@ $(document).ready(function () {
         replies.append(data);
         if (replies.children().length < 1) {
           var msg = $('<p>');
-          msg.append("No replies yet. Leave a reply below!");
+          msg.append('No replies yet. Leave a reply below!');
           replies.append(msg);
         }
         replies.slideDown('slow');
       },
       error: function error(_error) {
+        // eslint-disable-next-line no-alert
         alert(_error);
       }
     });

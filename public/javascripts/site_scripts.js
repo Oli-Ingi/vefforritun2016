@@ -86,7 +86,7 @@ var Forum = (function () {
      * Togglar sýnileika "New rant" formsins, ásamt því að stilla átt örvarinnar á "new rant" takkanum
      * sem sýnir hver hegðun formsins verður þegar ýtt er á takkann.
      */
-    
+
 
     /**
      * Finnur núverandi færslur á síðu og skilar í gagnastrúktúr

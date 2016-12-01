@@ -9,29 +9,24 @@ const getPostsInThread = threadId =>
   db.any('select * from posts where threadid = $1 ', threadId);
 
 const threadWithPosts = threadId =>
-  db.task((t) => {
-    return t.batch([
-      t.one('select * from threads where id = $1', threadId),
-      t.any('select * from posts where threadid = $1', threadId),
-    ]);
-  });
+  db.task(t => t.batch([
+    t.one('select * from threads where id = $1', threadId),
+    t.any('select * from posts where threadid = $1', threadId),
+  ])
+  );
 
 const postWithReplies = postId =>
-  db.task((t) => {
-    t.batch([
-      t.one('select * from posts where id = $1', postId),
-      t.any('select * from replies where postid = $1', postId),
-    ]);
-  });
+  db.task(t => t.batch([
+    t.one('select * from posts where id = $1', postId),
+    t.any('select * from replies where postid = $1', postId),
+  ])
+  );
 
 
 const getRepliesInPost = postId =>
   db.any('select * from replies where postId = $1', postId)
     .then(data => data)
-    .catch((error) => {
-      console.log('neibb');
-      return error;
-    });
+    .catch(error => error);
 
 const saveThread = (thread) => {
   const threadName = thread.threadName;

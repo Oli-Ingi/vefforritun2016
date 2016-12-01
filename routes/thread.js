@@ -20,14 +20,16 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/replies/:id', (req, res) => {
+  console.log(req.params.id);
   DBMan.getRepliesInPost(req.params.id)
     .then((replies) => {
+      console.log(replies);
       res.render('_replies', { replies });
     })
     .catch((error) => {
       res.render('error', { error });
-    })
-})
+    });
+});
 
 router.post('/:id', (req, res) => {
   console.log("correct entrypoint!");
