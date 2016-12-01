@@ -18,7 +18,7 @@ $(document).ready(function () {
 
   // eslint-disable-next-line prefer-arrow-callback
   $('.panel-group').on('click', '.panel-heading', function () {
-    var post = $(undefined);
+    var post = $(this);
     var postID = post.attr('id');
     var replies = post.parent().find('.replies');
 
