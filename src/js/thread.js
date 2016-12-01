@@ -16,4 +16,23 @@ $(document).ready(function() {
       header.addClass('dropup');
     }
   });
-});  
+
+
+  $('.panel-group').on('click', '.panel-heading', function() {
+    const post = $(this);
+    const postID = post.attr('id');
+    $.ajax({
+      url: `/thread/replies/${postID}`,
+      type: 'GET',
+      async: false,
+      success: function(data) {
+        const replies = post.parent().find('.replies');
+        replies.append(data);
+        alert(data);
+      },
+      error: function(error) {
+        alert(error);
+      }
+    })
+  });
+});

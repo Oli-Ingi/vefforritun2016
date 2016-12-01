@@ -18,4 +18,22 @@ $(document).ready(function () {
       header.addClass('dropup');
     }
   });
+
+  $('.panel-group').on('click', '.panel-heading', function () {
+    var post = $(this);
+    var postID = post.attr('id');
+    $.ajax({
+      url: '/thread/replies/' + postID,
+      type: 'GET',
+      async: false,
+      success: function success(data) {
+        var replies = post.parent().find('.replies');
+        replies.append(data);
+        alert(data);
+      },
+      error: function error(_error) {
+        alert(_error);
+      }
+    });
+  });
 });

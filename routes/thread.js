@@ -19,6 +19,16 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.get('/replies/:id', (req, res) => {
+  DBMan.getRepliesInPost(req.params.id)
+    .then((replies) => {
+      res.render('_replies', { replies });
+    })
+    .catch((error) => {
+      res.render('error', { error });
+    })
+})
+
 router.post('/:id', (req, res) => {
   const newPost = {
     threadId: req.params.id,

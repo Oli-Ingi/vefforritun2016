@@ -1,0 +1,11 @@
+
+article {
+  .panel-heading {
+    transition: 0.3s;
+  }
+
+  .panel-heading:hover {
+    background-color: #ccf;
+    cursor: pointer;
+  }
+}

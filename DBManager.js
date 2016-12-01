@@ -23,7 +23,7 @@ const getThreads = () => db.any('select * from threads');
 
 // returns an array of Post objects
 const getPostsInThread = threadId =>
-  db.any('select * from posts where threadid = $1', threadId);
+  db.any('select * from posts where threadid = $1 ', threadId);
 
 const threadWithPosts = threadId =>
   db.task((t) => {
