@@ -38,7 +38,7 @@ $(document).ready(function () {
 
     var filterElement = $('<p>');
     var closeIcon = $('<img>');
-    closeIcon.attr('src', '/Images/closeicon.png');
+    closeIcon.attr('src', '/images/closeicon.png');
     filterElement.append(filter + ' ');
     filterElement.append(closeIcon);
     filters.append(filterElement);
