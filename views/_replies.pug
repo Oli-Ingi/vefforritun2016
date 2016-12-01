@@ -2,5 +2,5 @@ each reply in replies
   .well.reply
     h4.name.text-info= reply.author
       small  replied on 
-        span= reply.date
+        span.date= reply.date.toJSON().slice(0,10)
     p.text= reply.text
