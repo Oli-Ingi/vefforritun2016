@@ -61,7 +61,6 @@ $(document).ready(function () {
         text: form.find('textarea[name="replier-reply"]').val(),
       },
       success: (data) => {
-        alert(data);
         $('.replies-container').append(data);
         $('.new-reply').fadeIn('slow');
       },
