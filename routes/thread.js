@@ -52,25 +52,27 @@ router.get('/replies/:id', (req, res) => {
 });
 
 router.post('/replies/:id', (req, res) => {
+  console.log("anybody here?");
   const newReply = {
     postId: req.params.id,
-    author: req.body['replier-name'],
-    text: req.body['replier-reply'],
+    author: req.body.author,
+    text: req.body.text,
   };
   console.log(newReply.postId);
   console.log(newReply.author);
   console.log(newReply.text);
   console.log("We're here in post replies!");
   DBMan.saveReply(newReply)
-    .then((id) => {
+    .then((data) => {
       console.log("inside then of newReply");
-      DBMan.getReply(id)
-        .then((reply) => {
+      DBMan.getReply(data.id)
+        .then((reply) => {  
           console.log("inside then of getReply");
           res.render('_reply', { reply })
         })
         .catch((error) => {
           console.log("inside error of getReply");
+          console.log(error.stack);
           res.render('error', { error });
         })
     })

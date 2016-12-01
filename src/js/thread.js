@@ -52,18 +52,19 @@ $(document).ready(function() {
   $('.panel-group').on('click', '.reply-btn', function() {
     const form = $(this).closest('form');
     const addr = form.attr('action');
-    
+
     $.ajax({
       url: addr,
       type: 'POST',
       async: true,
       data: {
-        author: $('input["replier-name"]').val(),
-        text: form.find('input["replier-reply"]').val()
+        author: form.find('input[name="replier-name"]').val(),
+        text: form.find('textarea[name="replier-reply"]').val()
       },
       success: (data) => {
-        $('replies-container').append(data);
-        $('new-reply').fadeIn('slow');
+        alert(data);
+        $('.replies-container').append(data);
+        $('.new-reply').fadeIn('slow');
       }
     })
   });

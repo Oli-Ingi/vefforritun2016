@@ -28,7 +28,7 @@ const getRepliesInPost = postId =>
   db.any('select * from replies where postid = $1', postId);
 
 const getReply = replyId =>
-  db.any('select * from replies where id = $1', id);
+  db.any('select * from replies where id = $1', replyId);
 
 const saveThread = (thread) => {
   const threadName = thread.threadName;

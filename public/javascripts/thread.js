@@ -59,12 +59,13 @@ $(document).ready(function () {
       type: 'POST',
       async: true,
       data: {
-        author: $('input["replier-name"]').val(),
-        text: form.find('input["replier-reply"]').val()
+        author: form.find('input[name="replier-name"]').val(),
+        text: form.find('textarea[name="replier-reply"]').val()
       },
       success: function success(data) {
-        $('replies-container').append(data);
-        $('new-reply').fadeIn('slow');
+        alert(data);
+        $('.replies-container').append(data);
+        $('.new-reply').fadeIn('slow');
       }
     });
   });
