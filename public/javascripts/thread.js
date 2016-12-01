@@ -17,7 +17,7 @@ $(document).ready(function () {
   });
 
   // eslint-disable-next-line prefer-arrow-callback
-  $('.panel-group').on('click', '.panel-heading', function () {
+  $('.panel-group').on('click', '.panel-heading', function fetchReplies() {
     var post = $(this);
     var postID = post.attr('id');
     var replies = post.parent().find('.replies');
@@ -49,7 +49,7 @@ $(document).ready(function () {
     });
   });
 
-  $('.panel-group').on('click', '.reply-btn', function () {
+  $('.panel-group').on('click', '.reply-btn', function postReply() {
     var form = $(this).closest('form');
     var addr = form.attr('action');
 

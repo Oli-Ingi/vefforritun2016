@@ -1,6 +1,5 @@
-
-$(document).ready(function () {
-  $('.toggle-form').click(function () {
+$(document).ready(() => {
+  $('.toggle-form').click(() => {
     const form = document.querySelector('.post-form');
     const formContainer = document.querySelector('.form-container');
 
@@ -16,7 +15,7 @@ $(document).ready(function () {
   });
 
   // eslint-disable-next-line prefer-arrow-callback
-  $('.panel-group').on('click', '.panel-heading', function () {
+  $('.panel-group').on('click', '.panel-heading', function fetchReplies() {
     const post = $(this);
     const postID = post.attr('id');
     const replies = post.parent().find('.replies');
@@ -48,7 +47,7 @@ $(document).ready(function () {
     });
   });
 
-  $('.panel-group').on('click', '.reply-btn', function () {
+  $('.panel-group').on('click', '.reply-btn', function postReply() {
     const form = $(this).closest('form');
     const addr = form.attr('action');
 

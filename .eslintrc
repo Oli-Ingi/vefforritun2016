@@ -7,7 +7,7 @@
     },
   "env": {
     "browser": true,
-	"jquery": true
+	  "jquery": true
   },
   "globals": {},
   "plugins": []

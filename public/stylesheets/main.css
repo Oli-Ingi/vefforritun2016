@@ -80,7 +80,8 @@ main {
       main .top .filter-container .filter-form .form-control {
         display: inline-block;
         margin-right: 5px; }
-  main a, main a:hover {
+  main a,
+  main a:hover {
     text-decoration: none; }
   main .thread {
     background-color: #9cf;

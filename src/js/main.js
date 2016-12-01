@@ -46,12 +46,12 @@ $(document).ready(() => {
   });
 
   // eslint-disable-next-line prefer-arrow-callback
-  $('.filters').on('click', 'p', function () {
+  $('.filters').on('click', 'p', function filterHandler() {
     const filter = $(this).text().trim();
     const filters = $('.filters');
 
     // eslint-disable-next-line prefer-arrow-callback
-    $('.thread').each(function () {
+    $('.thread').each(function callback() {
       const thread = $(this);
       if (thread.hasClass(filter)) {
         thread.removeClass(filter);
