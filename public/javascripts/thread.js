@@ -51,12 +51,17 @@ $(document).ready(function () {
   });
 
   $('.panel-group').on('click', '.reply-btn', function () {
-    var addr = $(this).closest('form').attr('action');
-    alert(addr);
+    var form = $(this).closest('form');
+    var addr = form.attr('action');
+
     $.ajax({
       url: addr,
       type: 'POST',
       async: true,
+      data: {
+        author: $('input["replier-name"]').val(),
+        text: form.find('input["replier-reply"]').val()
+      },
       success: function success(data) {
         $('replies-container').append(data);
         $('new-reply').fadeIn('slow');
