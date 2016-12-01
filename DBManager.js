@@ -1,6 +1,7 @@
 const pgp = require('pg-promise')();
 
-const db = pgp('postgres://forum:forum@localhost:5432/forum');
+const env = process.env.DATABASE_URL;
+const db = pgp(env || 'postgres://forum:forum@localhost:5432/forum');
 
 const getThreads = () => db.any('select * from threads');
 

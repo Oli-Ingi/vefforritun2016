@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(function () {
-
   $('.toggle-form').click(function () {
     var form = document.querySelector('.post-form');
     var formContainer = document.querySelector('.form-container');
@@ -19,7 +18,7 @@ $(document).ready(function () {
 
   // eslint-disable-next-line prefer-arrow-callback
   $('.panel-group').on('click', '.panel-heading', function () {
-    var post = $(this);
+    var post = $(undefined);
     var postID = post.attr('id');
     var replies = post.parent().find('.replies');
 
