@@ -1,23 +1,22 @@
 
-$(document).ready(function() {
+$(document).ready(function () {
+  $('.toggle-form').click(function () {
+    const form = document.querySelector('.post-form');
+    const formContainer = document.querySelector('.form-container');
 
-  $('.toggle-form').click(function() {
-      const form = document.querySelector('.post-form');
-      const formContainer = document.querySelector('.form-container');
-
-      if (form.classList.contains('hidden')) {
-          form.classList.remove('hidden');
-          formContainer.classList.remove('dropdown');
-          formContainer.classList.add('dropup');
-      } else {
-          form.classList.add('hidden');
-          formContainer.classList.remove('dropup');
-          formContainer.classList.add('dropdown');
-      };
+    if (form.classList.contains('hidden')) {
+      form.classList.remove('hidden');
+      formContainer.classList.remove('dropdown');
+      formContainer.classList.add('dropup');
+    } else {
+      form.classList.add('hidden');
+      formContainer.classList.remove('dropup');
+      formContainer.classList.add('dropdown');
+    }
   });
 
   // eslint-disable-next-line prefer-arrow-callback
-  $('.panel-group').on('click', '.panel-heading', function() {
+  $('.panel-group').on('click', '.panel-heading', function () {
     const post = $(this);
     const postID = post.attr('id');
     const replies = post.parent().find('.replies');
@@ -49,7 +48,7 @@ $(document).ready(function() {
     });
   });
 
-  $('.panel-group').on('click', '.reply-btn', function() {
+  $('.panel-group').on('click', '.reply-btn', function () {
     const form = $(this).closest('form');
     const addr = form.attr('action');
 
@@ -59,13 +58,13 @@ $(document).ready(function() {
       async: true,
       data: {
         author: form.find('input[name="replier-name"]').val(),
-        text: form.find('textarea[name="replier-reply"]').val()
+        text: form.find('textarea[name="replier-reply"]').val(),
       },
       success: (data) => {
         alert(data);
         $('.replies-container').append(data);
         $('.new-reply').fadeIn('slow');
-      }
-    })
+      },
+    });
   });
 });
