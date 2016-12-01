@@ -117,7 +117,8 @@ main {
     }
   }
 
-  a, a:hover { text-decoration: none; }
+  a,
+  a:hover { text-decoration: none; }
 
   .thread {
     background-color: $primary;
