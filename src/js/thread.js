@@ -1,10 +1,9 @@
-$(document).ready(function() {
-
-  $('.toggle-form').click(function() {
+$(document).ready(() => {
+  $('.toggle-form').click(() => {
     const form = $('.rant-form');
     const header = $('.toggle-form');
 
-    if(form.is(':visible')){
+    if (form.is(':visible')) {
       form.slideUp('slow');
       header.css('border-radius', '5px');
       header.removeClass('dropup');
@@ -18,13 +17,13 @@ $(document).ready(function() {
   });
 
 
-  $('.panel-group').on('click', '.panel-heading', function() {
+  $('.panel-group').on('click', '.panel-heading', () => {
     const post = $(this);
     const postID = post.attr('id');
     const replies = post.parent().find('.replies');
 
     if (replies.is(':visible')) {
-      replies.slideUp('slow', function() {
+      replies.slideUp('slow', () => {
         replies.empty();
       });
       return;
@@ -34,18 +33,19 @@ $(document).ready(function() {
       url: `/thread/replies/${postID}`,
       type: 'GET',
       async: false,
-      success: function(data) {
+      success: (data) => {
         replies.append(data);
-        if(replies.children().length < 1) {
+        if (replies.children().length < 1) {
           const msg = $('<p>');
-          msg.append("No replies yet. Leave a reply below!");
+          msg.append('No replies yet. Leave a reply below!');
           replies.append(msg);
         }
         replies.slideDown('slow');
       },
-      error: function(error) {
+      error: (error) => {
+        // eslint-disable-next-line no-alert
         alert(error);
-      }
-    })
+      },
+    });
   });
 });
