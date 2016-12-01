@@ -15,3 +15,10 @@ article .post-title {
 
 article .replies {
   display: none; }
+  article .replies .new-reply {
+    display: none; }
+  article .replies .form-group {
+    margin: 5px; }
+    article .replies .form-group textarea {
+      display: inline-block;
+      width: 100%; }

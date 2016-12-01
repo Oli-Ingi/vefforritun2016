@@ -25,9 +25,10 @@ const postWithReplies = postId =>
 
 
 const getRepliesInPost = postId =>
-  db.any('select * from replies where postId = $1', postId)
-    .then(data => data)
-    .catch(error => error);
+  db.any('select * from replies where postid = $1', postId);
+
+const getReply = replyId =>
+  db.any('select * from replies where id = $1', id);
 
 const saveThread = (thread) => {
   const threadName = thread.threadName;
@@ -63,6 +64,7 @@ module.exports = {
   threadWithPosts,
   getPostsInThread,
   getRepliesInPost,
+  getReply,
   saveThread,
   savePost,
   saveReply,

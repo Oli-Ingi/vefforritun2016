@@ -20,5 +20,16 @@ article {
 
   .replies {
     display: none;
+
+    .new-reply { display: none; }
+
+    .form-group {
+      margin: 5px;
+
+      textarea {
+        display: inline-block;
+        width:100%;
+      }
+    }
   }
 }

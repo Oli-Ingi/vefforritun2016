@@ -1,6 +1,7 @@
 'use strict';
 
 $(document).ready(function () {
+
   $('.toggle-form').click(function () {
     var form = document.querySelector('.post-form');
     var formContainer = document.querySelector('.form-container');
@@ -32,7 +33,7 @@ $(document).ready(function () {
     $.ajax({
       url: '/thread/replies/' + postID,
       type: 'GET',
-      async: false,
+      async: true,
       success: function success(data) {
         replies.append(data);
         if (replies.children().length < 1) {
@@ -45,6 +46,20 @@ $(document).ready(function () {
       error: function error(_error) {
         // eslint-disable-next-line no-alert
         alert(_error);
+      }
+    });
+  });
+
+  $('.panel-group').on('click', '.reply-btn', function () {
+    var addr = $(this).closest('form').attr('action');
+    alert(addr);
+    $.ajax({
+      url: addr,
+      type: 'POST',
+      async: true,
+      success: function success(data) {
+        $('replies-container').append(data);
+        $('new-reply').fadeIn('slow');
       }
     });
   });

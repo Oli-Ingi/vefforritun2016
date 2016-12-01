@@ -1,6 +1,18 @@
-each reply in replies
-  .well.reply
-    h4.name.text-info= reply.author
-      small  replied on
-        span= reply.date
-    p.text= reply.text
+.replies-container
+  each reply in replies
+    .well.reply
+      h4.name.text-info= reply.author
+        small  replied on
+          span= reply.date
+      p.text= reply.text
+form.replies-form(action="/thread/replies/" + postid method="POST")
+  .form-group.col-xs-6
+    label.sr-only(for="replier-name") Name
+    input.form-control(type="text" name="replier-name" placeHolder="Name")
+  .form-group.col-xs-12
+    label.sr-only(for="replier-reply") Reply
+    textarea.form-control(type="text" name="replier-reply" placeHolder="Reply")
+  .form-group.col-xs-6
+    button.btn.btn-primary.btn-sm.reply-btn(type="button")
+      span.glyphicon.glyphicon-pencil
+      span  Reply

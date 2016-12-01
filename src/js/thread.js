@@ -32,7 +32,7 @@ $(document).ready(function() {
     $.ajax({
       url: `/thread/replies/${postID}`,
       type: 'GET',
-      async: false,
+      async: true,
       success: (data) => {
         replies.append(data);
         if (replies.children().length < 1) {
@@ -47,5 +47,19 @@ $(document).ready(function() {
         alert(error);
       },
     });
+  });
+
+  $('.panel-group').on('click', '.reply-btn', function() {
+    const addr = $(this).closest('form').attr('action');
+    alert(addr);
+    $.ajax({
+      url: addr,
+      type: 'POST',
+      async: true,
+      success: (data) => {
+        $('replies-container').append(data);
+        $('new-reply').fadeIn('slow');
+      }
+    })
   });
 });
