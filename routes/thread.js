@@ -32,7 +32,6 @@ router.get('/replies/:id', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
-  console.log("correct entrypoint!");
   const newPost = {
     threadId: req.params.id,
     postName: req.body['new-title'],
@@ -45,7 +44,7 @@ router.post('/:id', (req, res) => {
     .then((data) => {
       console.log(data);
       console.log(data.id);
-      res.redirect('/thread/' + data.id);
+      res.redirect('/thread/' + req.params.id);
     })
     .catch((error) => {
       res.render('error', { error });

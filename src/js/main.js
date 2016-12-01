@@ -35,13 +35,16 @@ $(document).ready(() => {
     filters.append(filterElement);
 
     filterForm.val('');
+    countThreads();
   });
 
-  $('.filters').on('click', 'p', () => {
+  // eslint-disable-next-line prefer-arrow-callback
+  $('.filters').on('click', 'p', function() {
     const filter = $(this).text().trim();
     const filters = $('.filters');
 
-    $('.thread').each(() => {
+    // eslint-disable-next-line prefer-arrow-callback
+    $('.thread').each(function() {
       const thread = $(this);
       if (thread.hasClass(filter)) {
         thread.removeClass(filter);
@@ -53,5 +56,15 @@ $(document).ready(() => {
 
     $(this).remove();
     if (filters.children().length < 1) filters.empty();
+    countThreads();
   });
+
+  function countThreads() {
+    const spanLoc = $('.count');
+    const threads = $('.thread:visible');
+    spanLoc.empty();
+    spanLoc.prepend(`Showing ${threads.length} threads`);
+  }
+
+  countThreads();
 });

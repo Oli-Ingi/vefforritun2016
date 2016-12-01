@@ -33,6 +33,13 @@ main {
     align-items: flex-end;
     flex-wrap: wrap;
 
+    .count {
+      font-size: 18px;
+      font-weight: bold;
+      align-self: flex-start;
+      margin-bottom: 20px;
+    }
+
     .create-thread {
       display: flex;
       flex-direction: column;

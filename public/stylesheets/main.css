@@ -23,6 +23,11 @@ main {
     justify-content: space-between;
     align-items: flex-end;
     flex-wrap: wrap; }
+    main .top .count {
+      font-size: 18px;
+      font-weight: bold;
+      align-self: flex-start;
+      margin-bottom: 20px; }
     main .top .create-thread {
       display: flex;
       flex-direction: column;

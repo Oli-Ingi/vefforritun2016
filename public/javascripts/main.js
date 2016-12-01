@@ -37,14 +37,17 @@ $(document).ready(function () {
     filters.append(filterElement);
 
     filterForm.val('');
+    countThreads();
   });
 
+  // eslint-disable-next-line prefer-arrow-callback
   $('.filters').on('click', 'p', function () {
-    var filter = $(undefined).text().trim();
+    var filter = $(this).text().trim();
     var filters = $('.filters');
 
+    // eslint-disable-next-line prefer-arrow-callback
     $('.thread').each(function () {
-      var thread = $(undefined);
+      var thread = $(this);
       if (thread.hasClass(filter)) {
         thread.removeClass(filter);
 
@@ -53,7 +56,17 @@ $(document).ready(function () {
       }
     });
 
-    $(undefined).remove();
+    $(this).remove();
     if (filters.children().length < 1) filters.empty();
+    countThreads();
   });
+
+  function countThreads() {
+    var spanLoc = $('.count');
+    var threads = $('.thread:visible');
+    spanLoc.empty();
+    spanLoc.prepend('Showing ' + threads.length + ' threads');
+  }
+
+  countThreads();
 });
