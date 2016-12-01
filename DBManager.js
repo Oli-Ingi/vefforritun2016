@@ -2,23 +2,6 @@ const pgp = require('pg-promise')();
 
 const db = pgp('postgres://forum:forum@localhost:5432/forum');
 
-function Post(threadId, postName, author, text, id = 0, date = 0) {
-  this.id = id;
-  this.threadId = threadId;
-  this.postName = postName;
-  this.author = author;
-  this.text = text;
-  this.date = date;
-}
-
-function Reply(postId, author, text, id = 0, date = 0) {
-  this.id = id;
-  this.postId = postId;
-  this.author = author;
-  this.text = text;
-  this.date = date;
-}
-
 const getThreads = () => db.any('select * from threads');
 
 // returns an array of Post objects
@@ -76,46 +59,7 @@ const saveReply = (reply) => {
 };
 
 
-// START OF TESTING
-//---------------------------
-/*
-const texti = getPostsInThread(1);
-texti.then((data) => {
-  console.log(data);
-});
-
-// just to test the functions
-const svar = getRepliesInPost(1);
-svar.then((data) => {
-  console.log("--");
-}).catch((e) => { console.log(e); });
-
-
-const thread = new Thread('this about bazookas', 'Mr. Bombastic', 'this text is describing things about using TNT instead of rockets.');
-const insert3 = saveThread(thread);
-insert3.then((data) => {
-  console.log(data.id);
-  console.log('virkar að vista Thread');
-});
-
-const post = new Post(1, 'this about bazookas', 'Mr. Bombastic', 'this text is describing things about using TNT instead of rockets.');
-const insert2 = savePost(post);
-insert2.then((data) => {
-  console.log(data.id);
-  console.log('virkar að vista post');
-});
-
-const reply = new Reply(1, 'Mr. Bombastic', 'this seems to work');
-const insert = saveReply(reply);
-insert.then((data) => {
-  console.log(data.id);
-  console.log('virkar að vista reply');
-});
-*/
-
 module.exports = {
-  Post,
-  Reply,
   getThreads,
   postWithReplies,
   threadWithPosts,
