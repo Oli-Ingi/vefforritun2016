@@ -16,6 +16,13 @@ $(document).ready(() => {
     }
   });
 
+  function countThreads() {
+    const spanLoc = $('.count');
+    const threads = $('.thread:visible');
+    spanLoc.empty();
+    spanLoc.prepend(`Showing ${threads.length} threads`);
+  }
+
   $('.filter-btn').click(() => {
     const filters = $('.filters');
     const filterForm = $('.filter-form input');
@@ -39,12 +46,12 @@ $(document).ready(() => {
   });
 
   // eslint-disable-next-line prefer-arrow-callback
-  $('.filters').on('click', 'p', function() {
+  $('.filters').on('click', 'p', function () {
     const filter = $(this).text().trim();
     const filters = $('.filters');
 
     // eslint-disable-next-line prefer-arrow-callback
-    $('.thread').each(function() {
+    $('.thread').each(function () {
       const thread = $(this);
       if (thread.hasClass(filter)) {
         thread.removeClass(filter);
@@ -58,13 +65,6 @@ $(document).ready(() => {
     if (filters.children().length < 1) filters.empty();
     countThreads();
   });
-
-  function countThreads() {
-    const spanLoc = $('.count');
-    const threads = $('.thread:visible');
-    spanLoc.empty();
-    spanLoc.prepend(`Showing ${threads.length} threads`);
-  }
 
   countThreads();
 });
