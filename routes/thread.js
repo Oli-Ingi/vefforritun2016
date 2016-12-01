@@ -26,8 +26,8 @@ router.get('/replies/:id', (req, res) => {
     })
     .catch((error) => {
       res.render('error', { error });
-    })
-})
+    });
+});
 
 router.post('/:id', (req, res) => {
   const newPost = {
@@ -39,7 +39,7 @@ router.post('/:id', (req, res) => {
 
   DBMan.saveThread(newPost)
     .then((data) => {
-      res.redirect('/thread/post/' + data.id);
+      res.redirect(`/thread/post/${data.id}`);
     })
     .catch((error) => {
       res.render('error', { error });
