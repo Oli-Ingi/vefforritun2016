@@ -39,17 +39,17 @@ main {
         justify-content: space-between;
         align-items: center;
         padding: 10px;
-        background-color: #bbf;
+        background-color: #9cf;
         border-radius: 5px;
         transition: 0.3s; }
         main .top .create-thread .create-header h4 {
           margin: 0; }
       main .top .create-thread .create-header:hover {
-        background-color: #e4e4ff;
+        background-color: #c2e0ff;
         cursor: pointer; }
       main .top .create-thread .thread-form {
         display: none;
-        background-color: #99b;
+        background-color: #ffebd6;
         padding: 10px;
         border-radius: 0 0 5px 5px; }
       main .top .create-thread input,
@@ -80,12 +80,12 @@ main {
       main .top .filter-container .filter-form .form-control {
         display: inline-block;
         margin-right: 5px; }
-  main a {
+  main a, main a:hover {
     text-decoration: none; }
   main .thread {
     background-color: #9cf;
     padding: 10px;
-    box-shadow: 3px 3px 6px #000;
+    box-shadow: 3px 3px 6px #444;
     border-radius: 5px;
     margin-bottom: 10px;
     transition-duration: 0.3s; }
@@ -107,7 +107,10 @@ main {
     main .thread .label {
       color: #44f;
       font-weight: bold;
-      margin-bottom: 5px; }
+      margin-bottom: 5px;
+      display: block;
+      text-align: left;
+      font-size: 16px; }
     main .thread .description {
       color: #112; }
   main .thread:hover {

@@ -52,7 +52,7 @@ main {
         justify-content: space-between;
         align-items: center;
         padding: 10px;
-        background-color: #bbf;
+        background-color: $primary;
         border-radius: 5px;
         transition: 0.3s;
 
@@ -60,13 +60,13 @@ main {
       }
 
       .create-header:hover {
-        background-color: lighten(#bbf, 8%);
+        background-color: lighten($primary, 8%);
         cursor: pointer;
       }
 
       .thread-form {
         display: none;
-        background-color: #99b;
+        background-color: lighten(complement($primary), 12%);
         padding: 10px;
         border-radius: 0 0 5px 5px;
       }
@@ -117,12 +117,12 @@ main {
     }
   }
 
-  a { text-decoration: none; }
+  a, a:hover { text-decoration: none; }
 
   .thread {
     background-color: $primary;
     padding: 10px;
-    box-shadow: 3px 3px 6px #000;
+    box-shadow: 3px 3px 6px #444;
     border-radius: 5px;
     margin-bottom: 10px;
     transition-duration: 0.3s;
@@ -152,6 +152,9 @@ main {
       color: #44f;
       font-weight: bold;
       margin-bottom: 5px;
+      display: block;
+      text-align: left;
+      font-size: 16px;
     }
 
     .description {
