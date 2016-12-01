@@ -44,7 +44,7 @@ router.post('/:id', (req, res) => {
     .then((data) => {
       console.log(data);
       console.log(data.id);
-      res.redirect('/thread/' + req.params.id);
+      res.redirect(`/thread/'${req.params.id}`);
     })
     .catch((error) => {
       res.render('error', { error });
