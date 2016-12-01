@@ -21,14 +21,27 @@ $(document).ready(function() {
   $('.panel-group').on('click', '.panel-heading', function() {
     const post = $(this);
     const postID = post.attr('id');
+    const replies = post.parent().find('.replies');
+
+    if (replies.is(':visible')) {
+      replies.slideUp('slow', function() {
+        replies.empty();
+      });
+      return;
+    }
+
     $.ajax({
       url: `/thread/replies/${postID}`,
       type: 'GET',
       async: false,
       success: function(data) {
-        const replies = post.parent().find('.replies');
         replies.append(data);
-        alert(data);
+        if(replies.children().length < 1) {
+          const msg = $('<p>');
+          msg.append("No replies yet. Leave a reply below!");
+          replies.append(msg);
+        }
+        replies.slideDown('slow');
       },
       error: function(error) {
         alert(error);

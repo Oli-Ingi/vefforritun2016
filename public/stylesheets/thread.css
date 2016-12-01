@@ -4,3 +4,6 @@ article .panel-heading {
 article .panel-heading:hover {
   background-color: #ccf;
   cursor: pointer; }
+
+article .replies {
+  display: none; }
