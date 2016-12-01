@@ -6,6 +6,10 @@
 article {
   .panel-heading {
     transition: 0.3s;
+
+    span {
+      margin-left: 5px;
+    }
   }
 
   .panel-heading:hover {
@@ -32,4 +36,10 @@ article {
       }
     }
   }
+}
+
+.back-link {
+  margin: 20px 0;
+  display: block;
+  font-size: 20px;
 }

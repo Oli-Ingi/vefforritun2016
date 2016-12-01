@@ -41,6 +41,7 @@ html(lang='en')
                 h3= post.author
                   small  posted on
                     span.date= post.date.toJSON().slice(0,10)
+                  span.caret
               .panel-body
                 p.post-title= post.postname
                 p= post.text
@@ -48,7 +49,7 @@ html(lang='en')
                   .replies
                     // Hér koma svör við færslu
 
-        a(href="/") go back
+        a.back-link(href="/") Back to Threads Overview
   footer
   script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
   script(src="/javascripts/thread.js")
