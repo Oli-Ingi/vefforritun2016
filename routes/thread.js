@@ -20,8 +20,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/replies/:id', (req, res) => {
+  console.log(req.params.id);
   DBMan.getRepliesInPost(req.params.id)
     .then((replies) => {
+      console.log(replies);
       res.render('_replies', { replies });
     })
     .catch((error) => {
@@ -30,16 +32,20 @@ router.get('/replies/:id', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
+  console.log("correct entrypoint!");
   const newPost = {
     threadId: req.params.id,
-    postName: req.body['post-title'],
-    author: req.body['post-author'],
-    text: req.body['post-text'],
+    postName: req.body['new-title'],
+    author: req.body['new-author'],
+    text: req.body['new-post'],
   };
 
-  DBMan.saveThread(newPost)
+
+  DBMan.savePost(newPost)
     .then((data) => {
-      res.redirect(`/thread/post/${data.id}`);
+      console.log(data);
+      console.log(data.id);
+      res.redirect('/thread/' + data.id);
     })
     .catch((error) => {
       res.render('error', { error });

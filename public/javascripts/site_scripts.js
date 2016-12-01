@@ -59,9 +59,9 @@ var Forum = (function () {
             }
         } else {
            /*
-            * Mér fannst snyrtilegra að búa til fyrstu færsluna í þessu tilfelli frekar 
+            * Mér fannst snyrtilegra að búa til fyrstu færsluna í þessu tilfelli frekar
             * en að taka hana út þegar gögn eru í localStorage. Geri ráð fyrir að það sé
-            * í lagi þar sem ekki kom fram í verkefnislýsingu hvernig upphafsgögnin ættu 
+            * í lagi þar sem ekki kom fram í verkefnislýsingu hvernig upphafsgögnin ættu
             * að vera sýnd/geymd þegar vefurinn er opnaður í fyrsta skipti.
             */
             addEntry(
@@ -80,26 +80,13 @@ var Forum = (function () {
         document.querySelector('#new-topic').addEventListener('keypress', constrainText.bind(null, 1000));
         document.querySelector('#new-name').addEventListener('keypress', constrainText.bind(null, 300));
     }
-    
+
 
     /**
      * Togglar sýnileika "New rant" formsins, ásamt því að stilla átt örvarinnar á "new rant" takkanum
      * sem sýnir hver hegðun formsins verður þegar ýtt er á takkann.
      */
-    function toggleFormHandler() {
-        var form = document.querySelector('.rant-form');
-        var formContainer = document.querySelector('.form-container');
 
-        if (form.classList.contains('hidden')) {
-            form.classList.remove('hidden');
-            formContainer.classList.remove('dropdown');
-            formContainer.classList.add('dropup');
-        } else {
-            form.classList.add('hidden');
-            formContainer.classList.remove('dropup');
-            formContainer.classList.add('dropdown');
-        };
-    }
 
     /**
      * Finnur núverandi færslur á síðu og skilar í gagnastrúktúr
@@ -320,9 +307,9 @@ var Forum = (function () {
         form.appendChild(author);
         form.appendChild(document.createTextNode(' ')); // spacing-bil sbr. hint
         form.appendChild(reply);
-        form.appendChild(document.createTextNode(' ')); 
+        form.appendChild(document.createTextNode(' '));
         form.appendChild(btn);
-        
+
         return form;
     }
 

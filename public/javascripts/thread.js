@@ -2,22 +2,21 @@
 
 $(document).ready(function () {
   $('.toggle-form').click(function () {
-    var form = $('.rant-form');
-    var header = $('.toggle-form');
+    var form = document.querySelector('.post-form');
+    var formContainer = document.querySelector('.form-container');
 
-    if (form.is(':visible')) {
-      form.slideUp('slow');
-      header.css('border-radius', '5px');
-      header.removeClass('dropup');
-      header.addClass('dropdown');
+    if (form.classList.contains('hidden')) {
+      form.classList.remove('hidden');
+      formContainer.classList.remove('dropdown');
+      formContainer.classList.add('dropup');
     } else {
-      form.slideDown('slow');
-      header.css('border-radius', '5px 5px 0 0');
-      header.removeClass('dropdown');
-      header.addClass('dropup');
-    }
+      form.classList.add('hidden');
+      formContainer.classList.remove('dropup');
+      formContainer.classList.add('dropdown');
+    };
   });
 
+  // eslint-disable-next-line prefer-arrow-callback
   $('.panel-group').on('click', '.panel-heading', function () {
     var post = $(undefined);
     var postID = post.attr('id');

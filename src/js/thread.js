@@ -1,23 +1,23 @@
-$(document).ready(() => {
-  $('.toggle-form').click(() => {
-    const form = $('.rant-form');
-    const header = $('.toggle-form');
 
-    if (form.is(':visible')) {
-      form.slideUp('slow');
-      header.css('border-radius', '5px');
-      header.removeClass('dropup');
-      header.addClass('dropdown');
-    } else {
-      form.slideDown('slow');
-      header.css('border-radius', '5px 5px 0 0');
-      header.removeClass('dropdown');
-      header.addClass('dropup');
-    }
+$(document).ready(function() {
+
+  $('.toggle-form').click(function() {
+      const form = document.querySelector('.post-form');
+      const formContainer = document.querySelector('.form-container');
+
+      if (form.classList.contains('hidden')) {
+          form.classList.remove('hidden');
+          formContainer.classList.remove('dropdown');
+          formContainer.classList.add('dropup');
+      } else {
+          form.classList.add('hidden');
+          formContainer.classList.remove('dropup');
+          formContainer.classList.add('dropdown');
+      };
   });
 
-
-  $('.panel-group').on('click', '.panel-heading', () => {
+  // eslint-disable-next-line prefer-arrow-callback
+  $('.panel-group').on('click', '.panel-heading', function() {
     const post = $(this);
     const postID = post.attr('id');
     const replies = post.parent().find('.replies');
