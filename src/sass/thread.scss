@@ -1,3 +1,7 @@
+.btn .caret {
+  display: inline-block;
+  margin-left: 10px;
+}
 
 article {
   .panel-heading {
@@ -7,6 +11,11 @@ article {
   .panel-heading:hover {
     background-color: #ccf;
     cursor: pointer;
+  }
+
+  .post-title {
+    font-size: 16px;
+    font-weight: bold;
   }
 
   .replies {

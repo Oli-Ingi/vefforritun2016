@@ -45,7 +45,9 @@ const savePost = (post) => {
   const postName = post.postName;
   const author = post.author;
   const text = post.text;
-  return db.one('INSERT INTO posts(threadId, postName, author, text) VALUES($1, $2, $3, $4) returning id', [threadId, postName, author, text]);
+  return db.one('INSERT INTO posts(threadId, postName, author, text) '
+               + 'VALUES($1, $2, $3, $4) returning id',
+               [threadId, postName, author, text]);
 };
 
 // reply has to have the properties postId, author and text.
