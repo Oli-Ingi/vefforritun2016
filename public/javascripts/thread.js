@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(function () {
-
   $('.toggle-form').click(function () {
     var form = $('.rant-form');
     var header = $('.toggle-form');
@@ -20,7 +19,7 @@ $(document).ready(function () {
   });
 
   $('.panel-group').on('click', '.panel-heading', function () {
-    var post = $(this);
+    var post = $(undefined);
     var postID = post.attr('id');
     var replies = post.parent().find('.replies');
 
@@ -39,12 +38,13 @@ $(document).ready(function () {
         replies.append(data);
         if (replies.children().length < 1) {
           var msg = $('<p>');
-          msg.append("No replies yet. Leave a reply below!");
+          msg.append('No replies yet. Leave a reply below!');
           replies.append(msg);
         }
         replies.slideDown('slow');
       },
       error: function error(_error) {
+        // eslint-disable-next-line no-alert
         alert(_error);
       }
     });

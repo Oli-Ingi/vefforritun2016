@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(function () {
-
   $('.create-header').click(function () {
     var form = $('.thread-form');
     var header = $('.create-header');
@@ -28,7 +27,7 @@ $(document).ready(function () {
     elements.addClass(filter);
     elements.addClass('hidden');
 
-    if (filters.children().length < 1) filters.prepend("Filters:");
+    if (filters.children().length < 1) filters.prepend('Filters:');
 
     var filterElement = $('<p>');
     var closeIcon = $('<img>');
@@ -41,11 +40,11 @@ $(document).ready(function () {
   });
 
   $('.filters').on('click', 'p', function () {
-    var filter = $(this).text().trim();
+    var filter = $(undefined).text().trim();
     var filters = $('.filters');
 
     $('.thread').each(function () {
-      var thread = $(this);
+      var thread = $(undefined);
       if (thread.hasClass(filter)) {
         thread.removeClass(filter);
 
@@ -54,7 +53,7 @@ $(document).ready(function () {
       }
     });
 
-    $(this).remove();
+    $(undefined).remove();
     if (filters.children().length < 1) filters.empty();
   });
 });
