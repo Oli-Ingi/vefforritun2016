@@ -29,7 +29,7 @@ router.post('/:id', (req, res) => {
 
   DBMan.savePost(newPost)
     .then((data) => {
-      res.redirect('/thread/' + req.params.id);
+      res.redirect(`/thread/${req.params.id}`);
     })
     .catch((error) => {
       res.render('error', { error });

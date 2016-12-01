@@ -39,8 +39,8 @@ html(lang='en')
             article.panel.panel-info.entry
               header.panel-heading(id=post.id)
                 h3= post.author
-                  small  posted on
-                    span= post.date
+                  small  posted on 
+                    span.date= post.date.toJSON().slice(0,10)
               .panel-body
                 p.post-title= post.postname
                 p= post.text
