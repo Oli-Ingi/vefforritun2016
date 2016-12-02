@@ -13,15 +13,13 @@ const threadWithPosts = threadId =>
   db.task(t => t.batch([
     t.one('select * from threads where id = $1', threadId),
     t.any('select * from posts where threadid = $1', threadId),
-  ])
-  );
+  ]));
 
 const postWithReplies = postId =>
   db.task(t => t.batch([
     t.one('select * from posts where id = $1', postId),
     t.any('select * from replies where postid = $1', postId),
-  ])
-  );
+  ]));
 
 
 const getRepliesInPost = postId =>
@@ -30,33 +28,19 @@ const getRepliesInPost = postId =>
 const getReply = replyId =>
   db.any('select * from replies where id = $1', replyId);
 
-const saveThread = (thread) => {
-  const threadName = thread.threadName;
-  const author = thread.author;
-  const text = thread.description;
-  return db.one('INSERT INTO threads(threadName, author, text) VALUES($1, $2, $3) returning id', [threadName, author, text]);
-};
+const saveThread = (thread) => 
+  db.one('INSERT INTO threads(threadName, author, text) VALUES(${threadName}, ${author}, ${description}) returning id', thread);
 
-const savePost = (post) => {
-  const threadId = post.threadId;
-  const postName = post.postName;
-  const author = post.author;
-  const text = post.text;
-  return db.one('INSERT INTO posts(threadId, postName, author, text) '
-               + 'VALUES($1, $2, $3, $4) returning id',
-               [threadId, postName, author, text]);
-};
+
+const savePost = (post) =>
+  db.one('INSERT INTO posts(threadId, postName, author, text) '
+       + 'VALUES(${threadId}, ${postName}, ${author}, ${text}) returning id', post);
 
 // reply has to have the properties postId, author and text.
 // postId has to point to an id of a postId
 // author and text can just be strings.
-const saveReply = (reply) => {
-  const postId = reply.postId;
-  const author = reply.author;
-  const text = reply.text;
-  return db.one('INSERT INTO replies(postId, author, text) VALUES($1, $2, $3) returning id', [postId, author, text]);
-};
-
+const saveReply = (reply) =>
+  db.one('INSERT INTO replies(postId, author, text) VALUES(${postId}, ${author}, ${text}) returning id', reply);
 
 module.exports = {
   getThreads,
