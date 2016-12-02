@@ -28,18 +28,18 @@ const getRepliesInPost = postId =>
 const getReply = replyId =>
   db.any('select * from replies where id = $1', replyId);
 
-const saveThread = (thread) => 
+const saveThread = thread => 
   db.one('INSERT INTO threads(threadName, author, text) VALUES(${threadName}, ${author}, ${description}) returning id', thread);
 
 
-const savePost = (post) =>
+const savePost = post =>
   db.one('INSERT INTO posts(threadId, postName, author, text) '
        + 'VALUES(${threadId}, ${postName}, ${author}, ${text}) returning id', post);
 
 // reply has to have the properties postId, author and text.
 // postId has to point to an id of a postId
 // author and text can just be strings.
-const saveReply = (reply) =>
+const saveReply = reply =>
   db.one('INSERT INTO replies(postId, author, text) VALUES(${postId}, ${author}, ${text}) returning id', reply);
 
 module.exports = {
