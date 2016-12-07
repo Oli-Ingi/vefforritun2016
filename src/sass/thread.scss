@@ -1,3 +1,6 @@
+$primary: #9CAFE0;
+$secondary : #CCDBFC;
+
 .btn .caret {
   display: inline-block;
   margin-left: 10px;
@@ -12,14 +15,24 @@ article {
     }
   }
 
-  .panel-heading:hover {
-    background-color: #ccf;
-    cursor: pointer;
-  }
-
   .post-title {
     font-size: 16px;
     font-weight: bold;
+  }
+
+  .reply-header {
+    border-radius: 5px;
+    padding:5px 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: rgb(49, 112, 143);
+    transition-duration: 0.3s;
+    cursor: pointer;
+    background-color: lighten($primary, 20%);
+  }
+
+  .reply-header:hover {
+    background-color: lighten($primary, 10%);
   }
 
   .replies {
@@ -42,4 +55,28 @@ article {
   margin: 20px 0;
   display: block;
   font-size: 20px;
+}
+
+.no-replies {
+  font-weight: bold;
+}
+
+.date {
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.bg-primary {
+  background-color: $primary;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  color: black;
+}
+
+.bg-primary:hover {
+  background-color: darken($primary, 10%);
+}
+
+.panel-info > .panel-heading {
+  background-color: $secondary;
 }

@@ -2,7 +2,7 @@ body {
   margin: 0; }
 
 header {
-  background-color: #9cf;
+  background: linear-gradient(to right, #9CAFE0, #eaeef8 75%, #9CAFE0);
   padding: 20px;
   box-shadow: 0 3px 10px #666; }
   header h1 {
@@ -39,17 +39,17 @@ main {
         justify-content: space-between;
         align-items: center;
         padding: 10px;
-        background-color: #9cf;
+        background-color: #9CAFE0;
         border-radius: 5px;
         transition: 0.3s; }
         main .top .create-thread .create-header h4 {
           margin: 0; }
       main .top .create-thread .create-header:hover {
-        background-color: #c2e0ff;
+        background-color: #bbc8ea;
         cursor: pointer; }
       main .top .create-thread .thread-form {
         display: none;
-        background-color: #ffebd6;
+        background-color: #efe5cb;
         padding: 10px;
         border-radius: 0 0 5px 5px; }
       main .top .create-thread input,
@@ -84,9 +84,9 @@ main {
   main a:hover {
     text-decoration: none; }
   main .thread {
-    background-color: #9cf;
+    background-color: #CCDBFC;
     padding: 10px;
-    box-shadow: 3px 3px 6px #444;
+    border: 2px outset #ddd;
     border-radius: 5px;
     margin-bottom: 10px;
     transition-duration: 0.3s; }
@@ -115,4 +115,5 @@ main {
     main .thread .description {
       color: #112; }
   main .thread:hover {
-    background-color: #eef; }
+    background-color: #eef;
+    box-shadow: 3px 3px 6px #444; }

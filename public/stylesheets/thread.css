@@ -7,13 +7,22 @@ article .panel-heading {
   article .panel-heading span {
     margin-left: 5px; }
 
-article .panel-heading:hover {
-  background-color: #ccf;
-  cursor: pointer; }
-
 article .post-title {
   font-size: 16px;
   font-weight: bold; }
+
+article .reply-header {
+  border-radius: 5px;
+  padding: 5px 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #31708f;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  background-color: #eaeef8; }
+
+article .reply-header:hover {
+  background-color: #c3ceec; }
 
 article .replies {
   display: none; }
@@ -29,3 +38,22 @@ article .replies {
   margin: 20px 0;
   display: block;
   font-size: 20px; }
+
+.no-replies {
+  font-weight: bold; }
+
+.date {
+  margin-left: 5px;
+  font-weight: bold; }
+
+.bg-primary {
+  background-color: #9CAFE0;
+  transition-duration: 0.3s;
+  cursor: pointer;
+  color: black; }
+
+.bg-primary:hover {
+  background-color: #7590d4; }
+
+.panel-info > .panel-heading {
+  background-color: #CCDBFC; }

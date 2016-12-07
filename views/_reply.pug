@@ -1,5 +1,7 @@
 .well.reply.new-reply
   h4.name.text-info= reply.author
     small  replied on
-      span=  reply.date.toJSON().slice(0,10)
+      span.date #{reply.date.getDate()}.#{reply.date.getMonth() + 1}.#{reply.date.getFullYear()}
+      span at
+      span.date #{reply.date.getHours()}:#{reply.correctMins}
   p.text= reply.text

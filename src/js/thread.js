@@ -15,14 +15,15 @@ $(document).ready(() => {
   });
 
   // eslint-disable-next-line prefer-arrow-callback
-  $('.panel-group').on('click', '.panel-heading', function fetchReplies() {
+  $('.panel-group').on('click', '.reply-header', function fetchReplies() {
     const post = $(this);
     const postID = post.attr('id');
-    const replies = post.parent().find('.replies');
+    const replies = post.next('.replies');
 
     if (replies.is(':visible')) {
       replies.slideUp('slow', () => {
         replies.empty();
+        post.text('View replies');
       });
       return;
     }
@@ -32,17 +33,15 @@ $(document).ready(() => {
       type: 'GET',
       async: true,
       success: (data) => {
+        post.text('Hide replies');
         replies.append(data);
-        if (replies.children().length < 1) {
-          const msg = $('<p>');
+
+        if (!$('.replies-container').children().length) {
+          const msg = $('<p class="no-replies">');
           msg.append('No replies yet. Leave a reply below!');
-          replies.append(msg);
+          replies.prepend(msg);
         }
         replies.slideDown('slow');
-      },
-      error: (error) => {
-        // eslint-disable-next-line no-alert
-        alert(error);
       },
     });
   });

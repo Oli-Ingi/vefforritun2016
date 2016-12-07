@@ -17,14 +17,15 @@ $(document).ready(function () {
   });
 
   // eslint-disable-next-line prefer-arrow-callback
-  $('.panel-group').on('click', '.panel-heading', function fetchReplies() {
+  $('.panel-group').on('click', '.reply-header', function fetchReplies() {
     var post = $(this);
     var postID = post.attr('id');
-    var replies = post.parent().find('.replies');
+    var replies = post.next('.replies');
 
     if (replies.is(':visible')) {
       replies.slideUp('slow', function () {
         replies.empty();
+        post.text('View replies');
       });
       return;
     }
@@ -34,17 +35,15 @@ $(document).ready(function () {
       type: 'GET',
       async: true,
       success: function success(data) {
+        post.text('Hide replies');
         replies.append(data);
-        if (replies.children().length < 1) {
-          var msg = $('<p>');
+
+        if (!$('.replies-container').children().length) {
+          var msg = $('<p class="no-replies">');
           msg.append('No replies yet. Leave a reply below!');
-          replies.append(msg);
+          replies.prepend(msg);
         }
         replies.slideDown('slow');
-      },
-      error: function error(_error) {
-        // eslint-disable-next-line no-alert
-        alert(_error);
       }
     });
   });

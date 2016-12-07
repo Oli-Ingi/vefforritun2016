@@ -30,8 +30,9 @@ $(document).ready(function () {
     var filterForm = $('.filter-form input');
     var filter = filterForm.val();
     var elements = $('.thread:not(:contains(' + filter + '))');
+    var filterClass = filter + '-filter';
 
-    elements.addClass(filter);
+    elements.addClass(filterClass);
     elements.addClass('hidden');
 
     if (filters.children().length < 1) filters.prepend('Filters:');
@@ -55,8 +56,8 @@ $(document).ready(function () {
     // eslint-disable-next-line prefer-arrow-callback
     $('.thread').each(function callback() {
       var thread = $(this);
-      if (thread.hasClass(filter)) {
-        thread.removeClass(filter);
+      if (thread.hasClass(filter + '-filter')) {
+        thread.removeClass(filter + '-filter');
 
         var classes = thread.attr('class').split(/\s+/);
         if (classes.length < 3) thread.removeClass('hidden');

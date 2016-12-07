@@ -1,11 +1,13 @@
-$primary: #9cf;
+$primary: #9CAFE0;
+$secondary : #CCDBFC;
+$tertiary: #FFD0A8;
 
 body {
   margin: 0;
 }
 
 header {
-  background-color: $primary;
+  background: linear-gradient(to right, $primary, lighten($primary, 20%) 75%, $primary);
   padding: 20px;
   box-shadow: 0 3px 10px #666;
 
@@ -121,9 +123,9 @@ main {
   a:hover { text-decoration: none; }
 
   .thread {
-    background-color: $primary;
+    background-color: $secondary;
     padding: 10px;
-    box-shadow: 3px 3px 6px #444;
+    border: 2px outset #ddd;
     border-radius: 5px;
     margin-bottom: 10px;
     transition-duration: 0.3s;
@@ -165,5 +167,6 @@ main {
 
   .thread:hover {
     background-color: #eef;
+    box-shadow: 3px 3px 6px #444;
   }
 }

@@ -21,14 +21,14 @@ block content
           input.form-control.thread-title(type="text" id="thread-title" name="thread-title" placeholder="Title")
           label(for="thread-description") Thread description:
           textarea.form-control.thread-description(id="thread-description" name="thread-description" placeholder="Description")
-          button.create-btn.btn(type="submit") Create
+          button.create-btn.btn.btn-primary(type="submit") Create
             div
       .filter-container.col-xs-12.col-sm-6
         .filters
           // filters listed here
         .filter-form
           input.form-control(type="text")
-          button.filter-btn.btn
+          button.filter-btn.btn.btn-primary
              div Create filter
     .thread-container
       each thread in threads
@@ -38,8 +38,7 @@ block content
             span Created by
             p.creator= thread.author
             span   on
-            p.date= thread.date.toJSON().slice(0,10)
-
+            p.date #{thread.date.getDate()}.#{thread.date.getMonth() + 1}.#{thread.date.getFullYear()}
             p.label Description:
             p.description= thread.text
   footer
