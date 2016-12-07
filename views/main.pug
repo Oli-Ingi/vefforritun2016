@@ -16,9 +16,9 @@ block content
           span.caret
         form.thread-form(action="/" method="POST")
           label(for="thread-author") Author:
-          input.form-control.thread-author(type="text" id="thread-author" name="thread-author" placeholder="Author")
+          input.form-control.thread-author(type="text" id="thread-author" name="thread-author" placeholder="Author" required)
           label(for="thread-title") Thread title:
-          input.form-control.thread-title(type="text" id="thread-title" name="thread-title" placeholder="Title")
+          input.form-control.thread-title(type="text" id="thread-title" name="thread-title" placeholder="Title" required)
           label(for="thread-description") Thread description:
           textarea.form-control.thread-description(id="thread-description" name="thread-description" placeholder="Description")
           button.create-btn.btn.btn-primary(type="submit") Create

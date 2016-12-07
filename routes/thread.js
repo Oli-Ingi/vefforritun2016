@@ -9,14 +9,6 @@ router.get('/:id', (req, res) => {
       const thread = data[0];
       const posts = data[1];
 
-      for (let i = 0; i < posts.length; i += 1) {
-        if (posts[i].date.getMinutes() < 10) {
-          posts[i].correctMins = `0${posts[i].date.getMinutes()}`;
-        } else {
-          posts[i].correctMins = posts[i].date.getMinutes();
-        }
-      }
-
       res.render('thread', {
         thread,
         posts,
@@ -48,15 +40,6 @@ router.get('/replies/:id', (req, res) => {
   const postid = req.params.id;
   DBMan.getRepliesInPost(postid)
     .then((replies) => {
-      for (let i = 0; i < replies.length; i += 1) {
-        if (replies[i].date.getMinutes() < 10) {
-          // eslint-disable-next-line no-param-reassign
-          replies[i].correctMins = `0${replies[i].date.getMinutes()}`;
-        } else {
-          // eslint-disable-next-line no-param-reassign
-          replies[i].correctMins = replies[i].date.getMinutes();
-        }
-      }
       res.render('_replies', {
         replies,
         postid,

@@ -21,7 +21,7 @@ html(lang='en')
             .form-group.row
               .col-xs-12.col-sm-6
                 label(for='new-author') Name:
-                input#new-name.form-control(type='text', name='new-author', placeholder='Mr. Poster')
+                input#new-name.form-control(type='text', name='new-author', placeholder='Mr. Poster' required)
             .form-group.row
               .col-xs-12.col-sm-6
                 label(for='new-title') Post title:
@@ -29,12 +29,11 @@ html(lang='en')
             .form-group.row
               .col-xs-12
                 label(for='new-post') Topic:
-                textarea#new-topic.form-control(rows='6', name="new-post", placeholder='Post goes here')
+                textarea#new-topic.form-control(rows='6', name="new-post", placeholder='Post goes here' required)
             button.btn.btn-primary.btn-lg(type='submit')
               span.glyphicon.glyphicon-pencil
               |  Create
         .panel-group
-          // Hér birtast færslur notenda
           each post in posts
             article.panel.panel-info.entry
               header.panel-heading
@@ -42,7 +41,7 @@ html(lang='en')
                   small  posted on
                     span.date #{post.date.getDate()}.#{post.date.getMonth() + 1}.#{post.date.getFullYear()}
                     span at
-                    span.date #{post.date.getHours()}:#{post.correctMins}
+                    span.date #{post.date.getHours()}:#{("0" + post.date.getMinutes()).slice(-2)}
               .panel-body
                 p.post-title= post.postname
                 p= post.text

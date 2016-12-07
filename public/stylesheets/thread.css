@@ -47,7 +47,7 @@ article .replies {
   font-weight: bold; }
 
 .bg-primary {
-  background-color: #9CAFE0;
+  background-color: #9cafe0;
   transition-duration: 0.3s;
   cursor: pointer;
   color: black; }
@@ -56,4 +56,4 @@ article .replies {
   background-color: #7590d4; }
 
 .panel-info > .panel-heading {
-  background-color: #CCDBFC; }
+  background-color: #ccdbfc; }

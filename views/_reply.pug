@@ -3,5 +3,5 @@
     small  replied on
       span.date #{reply.date.getDate()}.#{reply.date.getMonth() + 1}.#{reply.date.getFullYear()}
       span at
-      span.date #{reply.date.getHours()}:#{reply.correctMins}
+      span.date #{reply.date.getHours()}:#{("0" + reply.date.getMinutes()).slice(-2)}
   p.text= reply.text

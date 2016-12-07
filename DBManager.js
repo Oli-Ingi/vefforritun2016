@@ -29,14 +29,17 @@ const getReply = replyId =>
 
 const saveThread = thread =>
   db.one('INSERT INTO threads(threadName, author, text)'
+         // eslint-disable-next-line no-template-curly-in-string
        + 'VALUES(${threadName}, ${author}, ${description}) returning id', thread);
 
 const savePost = post =>
   db.one('INSERT INTO posts(threadId, postName, author, text) '
+         // eslint-disable-next-line no-template-curly-in-string
        + 'VALUES(${threadId}, ${postName}, ${author}, ${text}) returning id', post);
 
 const saveReply = reply =>
   db.one('INSERT INTO replies(postId, author, text)'
+         // eslint-disable-next-line no-template-curly-in-string
        + 'VALUES(${postId}, ${author}, ${text}) returning id', reply);
 
 module.exports = {

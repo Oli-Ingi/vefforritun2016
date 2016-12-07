@@ -2,7 +2,7 @@ body {
   margin: 0; }
 
 header {
-  background: linear-gradient(to right, #9CAFE0, #eaeef8 75%, #9CAFE0);
+  background: linear-gradient(to right, #9cafe0, #eaeef8 75%, #9cafe0);
   padding: 20px;
   box-shadow: 0 3px 10px #666; }
   header h1 {
@@ -39,7 +39,7 @@ main {
         justify-content: space-between;
         align-items: center;
         padding: 10px;
-        background-color: #9CAFE0;
+        background-color: #9cafe0;
         border-radius: 5px;
         transition: 0.3s; }
         main .top .create-thread .create-header h4 {
@@ -84,7 +84,7 @@ main {
   main a:hover {
     text-decoration: none; }
   main .thread {
-    background-color: #CCDBFC;
+    background-color: #ccdbfc;
     padding: 10px;
     border: 2px outset #ddd;
     border-radius: 5px;

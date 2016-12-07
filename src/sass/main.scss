@@ -1,13 +1,14 @@
-$primary: #9CAFE0;
-$secondary : #CCDBFC;
-$tertiary: #FFD0A8;
+$primary: #9cafe0;
+$secondary: #ccdbfc;
+$tertiary: #ffd0a8;
+$grad: lighten($primary, 20%);
 
 body {
   margin: 0;
 }
 
 header {
-  background: linear-gradient(to right, $primary, lighten($primary, 20%) 75%, $primary);
+  background: linear-gradient(to right, $primary, $grad 75%, $primary);
   padding: 20px;
   box-shadow: 0 3px 10px #666;
 
