@@ -1,5 +1,6 @@
 $primary: #9cafe0;
 $secondary: #ccdbfc;
+$boot: #337ab7;
 
 .btn .caret {
   display: inline-block;
@@ -7,20 +8,15 @@ $secondary: #ccdbfc;
 }
 
 article {
-  .panel-heading {
-    transition: 0.3s;
-
-    span {
-      margin-left: 5px;
-    }
-  }
-
   .post-title {
     font-size: 16px;
     font-weight: bold;
   }
 
   .reply-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 5px;
     padding: 5px 20px;
     font-size: 16px;
@@ -52,9 +48,9 @@ article {
 }
 
 .back-link {
-  margin: 20px 0;
   display: block;
-  font-size: 20px;
+  font-size: 1.5em;
+  margin-bottom: 50px;
 }
 
 .no-replies {
@@ -66,17 +62,17 @@ article {
   font-weight: bold;
 }
 
-.bg-primary {
-  background-color: $primary;
-  transition-duration: 0.3s;
-  cursor: pointer;
-  color: black;
-}
+.bg-primary { cursor: pointer; }
 
 .bg-primary:hover {
-  background-color: darken($primary, 10%);
+  color: #fff;
+  background-color: darken($boot, 10%);
 }
 
 .panel-info > .panel-heading {
   background-color: $secondary;
 }
+
+.well { border-radius: 0 0 6px 6px; }
+
+.borders { border-radius: 6px 6px 0 0; }

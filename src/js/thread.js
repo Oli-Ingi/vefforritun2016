@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $('.toggle-form').click(() => {
+  $('.toggle-form').click((e) => {
     const form = document.querySelector('.post-form');
     const formContainer = document.querySelector('.form-container');
 
@@ -7,23 +7,26 @@ $(document).ready(() => {
       form.classList.remove('hidden');
       formContainer.classList.remove('dropdown');
       formContainer.classList.add('dropup');
+      $(e.target).addClass('borders');
     } else {
       form.classList.add('hidden');
       formContainer.classList.remove('dropup');
       formContainer.classList.add('dropdown');
+      $(e.target).removeClass('borders');
     }
   });
 
-  // eslint-disable-next-line prefer-arrow-callback
-  $('.panel-group').on('click', '.reply-header', function fetchReplies() {
-    const post = $(this);
+  $('.panel-group').on('click', '.reply-header', (e) => {
+    const post = $(e.target);
     const postID = post.attr('id');
     const replies = post.next('.replies');
 
     if (replies.is(':visible')) {
       replies.slideUp('slow', () => {
+        post.removeClass('dropup');
+        post.addClass('dropdown');
         replies.empty();
-        post.text('View replies');
+        post[0].firstChild.nodeValue = 'View replies';
       });
       return;
     }
@@ -33,11 +36,14 @@ $(document).ready(() => {
       type: 'GET',
       async: true,
       success: (data) => {
-        post.text('Hide replies');
+        post[0].firstChild.nodeValue = 'Hide replies';
         replies.append(data);
+        post.removeClass('dropdown');
+        post.addClass('dropup');
 
         if (!$('.replies-container').children().length) {
-          const msg = $('<p class="no-replies">');
+          const msg = $('<p>');
+          msg.addClass('no-replies');
           msg.append('No replies yet. Leave a reply below!');
           replies.prepend(msg);
         }
@@ -46,8 +52,8 @@ $(document).ready(() => {
     });
   });
 
-  $('.panel-group').on('click', '.reply-btn', function postReply() {
-    const form = $(this).closest('form');
+  $('.panel-group').on('click', '.reply-btn', (e) => {
+    const form = $(e.target).closest('form');
     const addr = form.attr('action');
 
     $.ajax({
@@ -61,6 +67,8 @@ $(document).ready(() => {
       success: (data) => {
         $('.replies-container').append(data);
         $('.new-reply').fadeIn('slow');
+        form.find('input[name="replier-name"]').val('');
+        form.find('textarea[name="replier-reply"]').val('');
       },
     });
   });

@@ -2,16 +2,14 @@
   display: inline-block;
   margin-left: 10px; }
 
-article .panel-heading {
-  transition: 0.3s; }
-  article .panel-heading span {
-    margin-left: 5px; }
-
 article .post-title {
   font-size: 16px;
   font-weight: bold; }
 
 article .reply-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 5px;
   padding: 5px 20px;
   font-size: 16px;
@@ -35,9 +33,9 @@ article .replies {
       width: 100%; }
 
 .back-link {
-  margin: 20px 0;
   display: block;
-  font-size: 20px; }
+  font-size: 1.5em;
+  margin-bottom: 50px; }
 
 .no-replies {
   font-weight: bold; }
@@ -47,13 +45,17 @@ article .replies {
   font-weight: bold; }
 
 .bg-primary {
-  background-color: #9cafe0;
-  transition-duration: 0.3s;
-  cursor: pointer;
-  color: black; }
+  cursor: pointer; }
 
 .bg-primary:hover {
-  background-color: #7590d4; }
+  color: #fff;
+  background-color: #285f8f; }
 
 .panel-info > .panel-heading {
   background-color: #ccdbfc; }
+
+.well {
+  border-radius: 0 0 6px 6px; }
+
+.borders {
+  border-radius: 6px 6px 0 0; }

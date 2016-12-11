@@ -48,14 +48,12 @@ $(document).ready(function () {
     countThreads();
   });
 
-  // eslint-disable-next-line prefer-arrow-callback
-  $('.filters').on('click', 'p', function filterHandler() {
-    var filter = $(this).text().trim();
+  $('.filters').on('click', 'p', function (e) {
+    var filter = $(e.target).text().trim();
     var filters = $('.filters');
 
-    // eslint-disable-next-line prefer-arrow-callback
-    $('.thread').each(function callback() {
-      var thread = $(this);
+    $('.thread').each(function (i, elem) {
+      var thread = $(elem);
       if (thread.hasClass(filter + '-filter')) {
         thread.removeClass(filter + '-filter');
 
@@ -64,7 +62,7 @@ $(document).ready(function () {
       }
     });
 
-    $(this).remove();
+    $(e.target).remove();
     if (filters.children().length < 1) filters.empty();
     countThreads();
   });

@@ -46,14 +46,12 @@ $(document).ready(() => {
     countThreads();
   });
 
-  // eslint-disable-next-line prefer-arrow-callback
-  $('.filters').on('click', 'p', function filterHandler() {
-    const filter = $(this).text().trim();
+  $('.filters').on('click', 'p', (e) => {
+    const filter = $(e.target).text().trim();
     const filters = $('.filters');
 
-    // eslint-disable-next-line prefer-arrow-callback
-    $('.thread').each(function callback() {
-      const thread = $(this);
+    $('.thread').each((i, elem) => {
+      const thread = $(elem);
       if (thread.hasClass(`${filter}-filter`)) {
         thread.removeClass(`${filter}-filter`);
 
@@ -62,7 +60,7 @@ $(document).ready(() => {
       }
     });
 
-    $(this).remove();
+    $(e.target).remove();
     if (filters.children().length < 1) filters.empty();
     countThreads();
   });

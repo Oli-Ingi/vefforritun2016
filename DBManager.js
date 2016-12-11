@@ -27,6 +27,9 @@ const getRepliesInPost = postId =>
 const getReply = replyId =>
   db.any('select * from replies where id = $1', replyId);
 
+// disable-um nokkrar línur gagnvart eslint hérna fyrir neðan þar sem
+// Þetta er rétta leiðin til að nota pg-promise queries skv. höfundi
+// pg-promise pakkans, sem benti okkur á það sjálfur.
 const saveThread = thread =>
   db.one('INSERT INTO threads(threadName, author, text)'
          // eslint-disable-next-line no-template-curly-in-string

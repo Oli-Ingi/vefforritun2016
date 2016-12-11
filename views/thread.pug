@@ -1,56 +1,52 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width')
-    title The Mega Forum
-    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
-    link(rel='stylesheet', href='/stylesheets/thread.css')
-  body
-    .container
-      header.page-header.text-center
-        h1= thread.threadname
-        p.text-info
-          em Created By #{thread.author} on #{thread.date.getDate()}.#{thread.date.getMonth() + 1}.#{thread.date.getFullYear()}
-      main
-        .panel.form-container
-          .btn.btn-block.bg-primary.btn-lg.toggle-form
-            | New Post
-            span.caret
-          form.well.hidden.post-form(action="/thread/" + thread.id method="POST")
-            .form-group.row
-              .col-xs-12.col-sm-6
-                label(for='new-author') Name:
-                input#new-name.form-control(type='text', name='new-author', placeholder='Mr. Poster' required)
-            .form-group.row
-              .col-xs-12.col-sm-6
-                label(for='new-title') Post title:
-                input#new-title.form-control(type='text', name='new-title', placeholder='Catchy title')
-            .form-group.row
-              .col-xs-12
-                label(for='new-post') Topic:
-                textarea#new-topic.form-control(rows='6', name="new-post", placeholder='Post goes here' required)
-            button.btn.btn-primary.btn-lg(type='submit')
-              span.glyphicon.glyphicon-pencil
-              |  Create
-        .panel-group
-          each post in posts
-            article.panel.panel-info.entry
-              header.panel-heading
-                h3= post.author
-                  small  posted on
-                    span.date #{post.date.getDate()}.#{post.date.getMonth() + 1}.#{post.date.getFullYear()}
-                    span at
-                    span.date #{post.date.getHours()}:#{("0" + post.date.getMinutes()).slice(-2)}
-              .panel-body
-                p.post-title= post.postname
-                p= post.text
-                .col-xs-offset-1
-                  .reply-header(id=post.id) View replies
-                  .replies
-                    // Hér koma svör við færslu
+extends layout
 
-        a.back-link(href="/") Back to Threads Overview
-  footer
+block extendHeader
+    link(rel='stylesheet', href='/stylesheets/thread.css')
+block content
+  .container
+    header.page-header.text-center
+      h1= thread.threadname
+      p.text-info
+        em Created By #{thread.author} on #{thread.date.getDate()}.#{thread.date.getMonth() + 1}.#{thread.date.getFullYear()}
+    main
+      .panel.form-container
+        .btn.btn-block.bg-primary.btn-lg.toggle-form
+          | New Post
+          span.caret
+        form.well.hidden.post-form(action="/thread/" + thread.id method="POST")
+          .form-group.row
+            .col-xs-12.col-sm-6
+              label(for='new-author') Name:
+              input#new-name.form-control(type='text', name='new-author', placeholder='Mr. Poster' required)
+          .form-group.row
+            .col-xs-12.col-sm-6
+              label(for='new-title') Post title:
+              input#new-title.form-control(type='text', name='new-title', placeholder='Catchy title')
+          .form-group.row
+            .col-xs-12
+              label(for='new-post') Topic:
+              textarea#new-topic.form-control(rows='6', name="new-post", placeholder='Post goes here' required)
+          button.btn.btn-primary.btn-lg(type='submit')
+            span.glyphicon.glyphicon-pencil
+            |  Create
+      .panel-group
+        each post in posts
+          article.panel.panel-info.entry
+            header.panel-heading
+              h3= post.author
+                small  posted on
+                  span.date #{post.date.getDate()}.#{post.date.getMonth() + 1}.#{post.date.getFullYear()}
+                  span  at
+                  span.date #{post.date.getHours()}:#{("0" + post.date.getMinutes()).slice(-2)}
+            .panel-body
+              p.post-title= post.postname
+              p= post.text
+              .col-xs-offset-1
+                .reply-header(id=post.id) View replies
+                  span.caret
+                .replies
+                  // Hér koma svör við færslu með Ajax
+
+    a.back-link(href="/") Back to Threads
   script(src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous")
   script(src="/javascripts/thread.js")

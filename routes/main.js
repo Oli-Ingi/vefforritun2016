@@ -1,12 +1,19 @@
 const express = require('express');
 const DBMan = require('../DBManager');
+// disable-um linter þar sem við verðum að nota Router með stóru 'R' til
+// að geta sótt og notað express.Router
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
 router.get('/', (req, res) => {
   DBMan.getThreads()
     .then((threads) => {
-      res.render('main', { threads });
+      const title = 'The Mega Forum';
+
+      res.render('main', {
+        title,
+        threads,
+      });
     })
     .catch((error) => {
       res.render('error', { error });

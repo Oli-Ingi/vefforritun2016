@@ -1,4 +1,6 @@
 const express = require('express');
+// disable-um linter þar sem við verðum að nota Router með stóru 'R' til
+// að geta sótt og notað express.Router
 // eslint-disable-next-line new-cap
 const router = express.Router();
 const DBMan = require('../DBManager');
@@ -8,8 +10,10 @@ router.get('/:id', (req, res) => {
     .then((data) => {
       const thread = data[0];
       const posts = data[1];
+      const title = `Thread - ${thread.threadname}`;
 
       res.render('thread', {
+        title,
         thread,
         posts,
       });
